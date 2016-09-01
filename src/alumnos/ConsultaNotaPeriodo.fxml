@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="consultaNotaPeriodoBox" prefHeight="200.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.ConsultaNotaPeriodoController">
+   <children>
+      <AnchorPane>
+         <children>
+            <Label layoutX="64.0" layoutY="68.0" text="Busqueda:" />
+            <TextField fx:id="txtBusqueda" layoutX="189.0" layoutY="64.0" prefHeight="22.0" prefWidth="585.0" />
+            <Label layoutX="514.0" layoutY="-1.0" text="Consulta de nota por periodo">
+               <font>
+                  <Font name="Bell MT" size="26.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="rbtnNombres" layoutX="907.0" layoutY="68.0" mnemonicParsing="false" text="Por Nombres" />
+            <RadioButton fx:id="rbtnCedula" layoutX="1056.0" layoutY="68.0" mnemonicParsing="false" text="Por cédula" />
+            <RadioButton fx:id="rbtnMatricula" layoutX="1194.0" layoutY="68.0" mnemonicParsing="false" text="Por matricula" />
+            <Button fx:id="btnBuscar" layoutX="482.0" layoutY="133.0" mnemonicParsing="false" onAction="#mostrarNotas" prefHeight="22.0" prefWidth="166.0" text="Buscar" />
+            <Button layoutX="698.0" layoutY="133.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="152.0" text="Cancelar" />
+            <Label layoutX="64.0" layoutY="100.0" text="Periodo Lectivo: " />
+            <ComboBox fx:id="cBoxPeriodos" layoutX="189.0" layoutY="96.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="331.0" prefWidth="1335.0">
+         <children>
+            <TableView fx:id="tableNotas" layoutY="6.0" prefHeight="325.0" prefWidth="1335.0">
+               <columns>
+                  <TableColumn fx:id="codMateria" prefWidth="119.0" text="Codigo Materia" />
+                  <TableColumn fx:id="nomMateria" minWidth="0.0" prefWidth="393.0" text="Nombre Materia" />
+                  <TableColumn fx:id="firstQui" prefWidth="88.0" text="1er Quimestre" />
+                  <TableColumn fx:id="secondQui" prefWidth="90.0" text="2do Quimestre" />
+                  <TableColumn fx:id="prom" prefWidth="146.0" text="Promedio" />
+                  <TableColumn fx:id="sup" prefWidth="141.0" text="Supletorio" />
+                  <TableColumn fx:id="curso" prefWidth="357.0" text="Curso" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

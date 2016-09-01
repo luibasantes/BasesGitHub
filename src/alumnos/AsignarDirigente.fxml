@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.AsignarDirigenteController">
+   <children>
+      <Label layoutX="292.0" layoutY="14.0" text="Asignación de Dirigente">
+         <font>
+            <Font name="Arabic Typesetting" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="105.0" layoutY="106.0" text="Seleccionar Curso:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Button layoutX="429.0" layoutY="541.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
+      <Label layoutX="101.0" layoutY="199.0" text="Dirigente Actual:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="290.0" prefHeight="24.0" prefWidth="219.0" text="Seleccionar Profesor:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Button layoutX="202.0" layoutY="541.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Asignar Dirigente" />
+      <ComboBox layoutX="309.0" layoutY="106.0" prefHeight="25.0" prefWidth="450.0" />
+      <ComboBox layoutX="309.0" layoutY="290.0" prefHeight="25.0" prefWidth="450.0" />
+      <TableView layoutX="114.0" layoutY="391.0" prefHeight="58.0" prefWidth="555.0">
+        <columns>
+          <TableColumn prefWidth="207.0" text="Curso" />
+          <TableColumn prefWidth="347.0" text="Dirigente" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

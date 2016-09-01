@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.AgregarMateriaController">
+   <children>
+      <Label layoutX="557.0" layoutY="14.0" text="Creacion de Materia">
+         <font>
+            <Font name="Arabic Typesetting" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="105.0" layoutY="106.0" text="Codigo Materia:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="320.0" layoutY="105.0" prefHeight="25.0" prefWidth="593.0" />
+      <Button layoutX="603.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
+      <Label layoutX="105.0" layoutY="172.0" text="Nombre:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="252.0" prefHeight="24.0" prefWidth="156.0" text="Asignar a Cursos:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="320.0" layoutY="172.0" prefHeight="25.0" prefWidth="593.0" />
+      <Button layoutX="345.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Crear  Materia" />
+      <ComboBox layoutX="320.0" layoutY="252.0" prefHeight="25.0" prefWidth="432.0" />
+      <TableView layoutX="85.0" layoutY="321.0" prefHeight="200.0" prefWidth="922.0">
+        <columns>
+          <TableColumn prefWidth="548.0" text="Cursos Asignados " />
+          <TableColumn prefWidth="428.0" text="Periodo Lectivo" />
+        </columns>
+      </TableView>
+      <Button layoutX="792.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Asignar Curso" />
+   </children>
+</AnchorPane>

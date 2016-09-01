@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="PanelInfoGeneral" fx:id="infoGeneralPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.InfoGeneralController">
+   <children>
+      <Label layoutX="417.0" layoutY="26.0" prefHeight="43.0" prefWidth="487.0" text="INFORMACION  GENERAL" underline="true">
+         <font>
+            <Font name="Bell MT" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="399.0" layoutY="69.0" lineSpacing="3.0" text="UNIDAD EDUCATIVA &#10;FRANCISCO HUERTA RENDON" textAlignment="CENTER" textFill="#2828bc">
+         <font>
+            <Font name="Agency FB" size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id="periodo" layoutX="394.0" layoutY="203.0" text="PERIODO LECTIVO: ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="rector" layoutX="394.0" layoutY="256.0" text="RECTOR:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="vice" layoutX="394.0" layoutY="306.0" text="VICERRECTOR:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="estudiantes" layoutX="395.0" layoutY="361.0" text="NO. DE ESTUDIANTES ACTUALES:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="profesores" layoutX="396.0" layoutY="416.0" text="NO. DE PROFESORES ACTUALES: ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="660.0" layoutY="468.0" mnemonicParsing="false" onAction="#cerrar" prefHeight="22.0" prefWidth="113.0" text="Aceptar" />
+      <Label layoutX="22.0" layoutY="218.0" text="       " />
+   </children>
+</AnchorPane>

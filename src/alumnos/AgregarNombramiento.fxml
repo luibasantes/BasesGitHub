@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="agregarNombramientoPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.AgregarNombramientoController">
+   <children>
+      <Label layoutX="479.0" layoutY="9.0" text="Agregar Nombramiento">
+         <font>
+            <Font name="Arabic Typesetting" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="110.0" layoutY="108.0" text="Buscar Empleado:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="320.0" layoutY="105.0" prefHeight="25.0" prefWidth="432.0" />
+      <RadioButton layoutX="844.0" layoutY="109.0" mnemonicParsing="false" text="Por Nombres" />
+      <RadioButton layoutX="990.0" layoutY="108.0" mnemonicParsing="false" text="Por Id" />
+      <RadioButton layoutX="1131.0" layoutY="108.0" mnemonicParsing="false" text="Por cedula" />
+      <Button layoutX="505.0" layoutY="164.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Buscar " />
+      <Button layoutX="678.0" layoutY="164.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
+      <Label layoutX="105.0" layoutY="265.0" text="Nombre:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="104.0" layoutY="322.0" text="Identificacion:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="105.0" layoutY="396.0" text="Ingrese Nuevo Cargo:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="394.0" layoutY="396.0" prefHeight="25.0" prefWidth="336.0" />
+      <Label layoutX="98.0" layoutY="471.0" text="Asingar Departamento:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="394.0" layoutY="471.0" prefHeight="25.0" prefWidth="336.0" />
+      <Button layoutX="692.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Asignar Nombramiento" />
+      <Label layoutX="777.0" layoutY="277.0" text="Codigo Nombramiento:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="777.0" layoutY="339.0" text="Tipo Nombramiento">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="777.0" layoutY="394.0" text="Fecha Inicio:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="776.0" layoutY="473.0" text="Fecha Fin:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="1040.0" layoutY="275.0" prefHeight="25.0" prefWidth="256.0" />
+      <TextField layoutX="1034.0" layoutY="401.0" prefHeight="25.0" prefWidth="256.0" />
+      <TextField layoutX="1034.0" layoutY="475.0" prefHeight="25.0" prefWidth="256.0" />
+      <ComboBox layoutX="1039.0" layoutY="341.0" prefHeight="25.0" prefWidth="253.0" />
+   </children>
+</AnchorPane>

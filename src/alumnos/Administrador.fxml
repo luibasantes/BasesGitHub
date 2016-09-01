@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.AdministradorController">
+    <children>
+      <VBox fx:id="AlumnoLayout" alignment="TOP_CENTER" layoutY="117.0" prefHeight="707.0" prefWidth="1485.0">
+         <children>
+            <HBox fx:id="hBoxMenu" alignment="CENTER" prefHeight="29.0" prefWidth="1436.0">
+               <children>
+                  <MenuBar fx:id="menuAlumno" prefHeight="29.0" prefWidth="1322.0">
+                    <menus>
+                      <Menu fx:id="menuConsulta" mnemonicParsing="false" text="Sistema">
+                        <items>
+                          <MenuItem fx:id="menuPersonal" mnemonicParsing="false" onAction="#mostrarInfoGen" text="Informacion de la Institucion" />
+                              <MenuItem fx:id="menuNotas" mnemonicParsing="false" onAction="#mostrarCambiarPeriodo" text="Cambiar periodo lectivo" />
+                        </items>
+                      </Menu>
+                        <Menu mnemonicParsing="false" text="Consultas">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#mostrarInfoUsuario" text="Informacion Personal" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <Menu mnemonicParsing="false" text="Alumnos">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#mostrarConsultaNotaPeriodo" text="Consultar notas por periodo" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarInfoAlumno" text="Consulltar informacion personal" />
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Empleados">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#mostrarInfoEmpleado" text="Consultar informacion" />
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Cursos">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#mostrarConsultaMateriaCurso" text="Consultar Materias del curso" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarConsultaNotaCurso" text="Consulta de notas por curso" />
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Departamentos">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#mostrarInfoDepartamento" text="Consultar informacion" />
+                                </items>
+                              </Menu>
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Acciones">
+                           <items>
+                              <Menu mnemonicParsing="false" text="Alumnos ">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#mostrarIngresoAlumnos" text="Agregar alumno" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarModificaAlumno" text="Modificar informacion" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarCambioEstadoMatricula" text="Cambiar estado de matricula" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarModificaIngresaNotas" text="Ingresar/Modificar Notas" />
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Empleados">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarIngresoEmpleadoSistema" text="Agregar empleado" />
+                                  <MenuItem mnemonicParsing="false" onAction="#mostrarModificacionEmpleado" text="Modificar informacion" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarAgregaNombramiento" text="Agregar nombramiento" />
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Materias">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#mostrarAgregarMateria" text="Agregar Materia" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarEliminarMateria" text="Eliminar Materia" />
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Cursos">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarAsignarDirigente" text="Asignar Dirigente" />
+                                  <MenuItem mnemonicParsing="false" onAction="#mostrarAgregarCurso" text="Agregar Curso" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarEliminarCurso" text="Eliminar Curso" />
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Departamentos">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Crear Departamento" />
+                                </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                    </menus>
+                  </MenuBar>
+                  <MenuBar fx:id="menuCarrar" prefHeight="29.0" prefWidth="163.0">
+                    <menus>
+                      <Menu fx:id="menuLogout" mnemonicParsing="false" text="Terminar Sesion">
+                           <items>
+                              <MenuItem fx:id="menuCerrarSesion" mnemonicParsing="false" onAction="#logout" text="Cerrar Sesion" />
+                              <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#logout" text="Salir" />
+                           </items></Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+            <Pane fx:id="loaderPane" nodeOrientation="LEFT_TO_RIGHT" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="117.0" fitWidth="1491.0" layoutX="-6.0" opacity="0.68" pickOnBounds="true">
+         <image>
+            <Image url="@../750px-Bandera_de_Los_Ríos.svg.png" />
+         </image>
+         <effect>
+            <ColorAdjust />
+         </effect>
+      </ImageView>
+    </children>
+</AnchorPane>
