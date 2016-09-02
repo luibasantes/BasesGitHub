@@ -38,7 +38,7 @@ public class AgregarCursoController implements Initializable {
      */
     
     @FXML
-    TextField codeF,nameF;
+    TextField codeF,nameF,capF;
     @FXML
     ComboBox parBox;
     @FXML
@@ -46,7 +46,7 @@ public class AgregarCursoController implements Initializable {
     @FXML
     TableView<Curso> tablaCursos;
     @FXML
-    TableColumn<Curso,String> codeCol,nameCol,parCol,periodCol;
+    TableColumn<Curso,String> codeCol,nameCol,parCol,periodCol,capCol;
     ArrayList<Curso> cursos=new ArrayList<Curso>();
     int ultimo;
     @Override
@@ -66,6 +66,7 @@ public class AgregarCursoController implements Initializable {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("nombreCurso"));
         parCol.setCellValueFactory(new PropertyValueFactory<>("paralelo"));
         periodCol.setCellValueFactory(new PropertyValueFactory<>("periodo"));
+        capCol.setCellValueFactory(new PropertyValueFactory<>("capacidad"));
         try{
         Conexion.procedure=Conexion.connection.prepareCall("{call verificarCodigoCurso()}");
         Conexion.result=Conexion.procedure.executeQuery();
@@ -93,19 +94,20 @@ public class AgregarCursoController implements Initializable {
                 error.showAndWait();
         }
         else{
-            Curso c=new Curso(PeriodoLectivo.year+"CUR"+codeF.getText(),nameF.getText(),(String) parBox.getValue(),PeriodoLectivo.periodo,"ACTIVO",null);
+            Curso c=new Curso(PeriodoLectivo.year+"CUR"+codeF.getText(),nameF.getText(),(String) parBox.getValue(),PeriodoLectivo.periodo,"ACTIVO",capF.getText(),null);
             tablaCursos.getItems().add(c);
             ultimo=Integer.parseInt(codeF.getText());
             cursos.add(c);
             codeF.clear();
             nameF.clear();
+            capF.clear();
         }
         crearButton.setDisable(true);
     }
     
     public void generarCursos(ActionEvent e) throws SQLException{
         for(Curso c:cursos){
-            Conexion.procedure=Conexion.connection.prepareCall("{call ingresarCursos('"+c.getIdCurso()+"','" + c.getNombreCurso()+"','"+c.getParalelo()+"','"+c.getPeriodo()+"','"+c.getEstado()+"')}");
+            Conexion.procedure=Conexion.connection.prepareCall("{call ingresarCursos('"+c.getIdCurso()+"','" + c.getNombreCurso()+"','"+c.getParalelo()+"','"+c.getPeriodo()+"','"+c.getEstado()+"','"+c.getCapacidad()+"')}");
             Conexion.procedure.execute();
         }
         Alert suceed=new Alert(Alert.AlertType.CONFIRMATION);

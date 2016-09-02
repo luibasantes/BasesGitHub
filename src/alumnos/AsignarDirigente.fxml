@@ -19,8 +19,8 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button layoutX="429.0" layoutY="541.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
-      <Label layoutX="101.0" layoutY="199.0" text="Dirigente Actual:">
+      <Button layoutX="453.0" layoutY="432.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
+      <Label fx:id="dirLabel" layoutX="101.0" layoutY="199.0" text="Dirigente Actual:">
          <font>
             <Font size="19.0" />
          </font>
@@ -30,14 +30,8 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button layoutX="202.0" layoutY="541.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Asignar Dirigente" />
-      <ComboBox layoutX="309.0" layoutY="106.0" prefHeight="25.0" prefWidth="450.0" />
-      <ComboBox layoutX="309.0" layoutY="290.0" prefHeight="25.0" prefWidth="450.0" />
-      <TableView layoutX="114.0" layoutY="391.0" prefHeight="58.0" prefWidth="555.0">
-        <columns>
-          <TableColumn prefWidth="207.0" text="Curso" />
-          <TableColumn prefWidth="347.0" text="Dirigente" />
-        </columns>
-      </TableView>
+      <Button fx:id="asignarButton" layoutX="170.0" layoutY="432.0" mnemonicParsing="false" onAction="#asignarDirigente" prefHeight="25.0" prefWidth="181.0" text="Asignar Dirigente" />
+      <ComboBox fx:id="cursoBox" layoutX="309.0" layoutY="106.0" onAction="#mostrarDirigente" prefHeight="25.0" prefWidth="450.0" />
+      <ComboBox fx:id="profesorBox" layoutX="309.0" layoutY="290.0" prefHeight="25.0" prefWidth="450.0" />
    </children>
 </AnchorPane>

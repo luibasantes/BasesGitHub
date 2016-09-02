@@ -12,17 +12,27 @@ import javafx.beans.property.SimpleStringProperty;
  * @author Hawk
  */
 public class Curso {
-    private String idCurso,nombreCurso,paralelo,periodo,estado,dirigente;
+    private String idCurso,nombreCurso,paralelo,periodo,estado,capacidad,dirigente;
 
-    public Curso(String idCurso, String nombreCurso, String paralelo, String periodo, String estado, String dirigente) {
+    public Curso(String idCurso, String nombreCurso, String paralelo, String periodo, String estado,String capacidad, String dirigente) {
         this.idCurso = idCurso;
         this.nombreCurso = nombreCurso;
         this.paralelo = paralelo;
         this.periodo = periodo;
         this.estado = estado;
         this.dirigente = dirigente;
+        this.capacidad=capacidad;
     }
 
+    public String getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(String capacidad) {
+        this.capacidad = capacidad;
+    }
+    
+    
     public String getIdCurso() {
         return idCurso;
     }

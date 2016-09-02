@@ -19,7 +19,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField layoutX="320.0" layoutY="105.0" prefHeight="25.0" prefWidth="593.0" />
+      <TextField fx:id="codigoF" layoutX="320.0" layoutY="105.0" prefHeight="25.0" prefWidth="593.0" />
       <Button layoutX="603.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
       <Label layoutX="105.0" layoutY="172.0" text="Nombre:">
          <font>
@@ -31,15 +31,15 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField layoutX="320.0" layoutY="172.0" prefHeight="25.0" prefWidth="593.0" />
-      <Button layoutX="345.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Crear  Materia" />
-      <ComboBox layoutX="320.0" layoutY="252.0" prefHeight="25.0" prefWidth="432.0" />
+      <TextField fx:id="nombreF" layoutX="320.0" layoutY="172.0" prefHeight="25.0" prefWidth="593.0" />
+      <Button layoutX="345.0" layoutY="553.0" mnemonicParsing="false" onAction="#crearMateria" prefHeight="25.0" prefWidth="181.0" text="Crear  Materia" />
+      <ComboBox fx:id="cursoBox" layoutX="320.0" layoutY="252.0" onAction="#enableButton" prefHeight="25.0" prefWidth="432.0" />
       <TableView layoutX="85.0" layoutY="321.0" prefHeight="200.0" prefWidth="922.0">
         <columns>
-          <TableColumn prefWidth="548.0" text="Cursos Asignados " />
-          <TableColumn prefWidth="428.0" text="Periodo Lectivo" />
+          <TableColumn fx:id="nameCol" prefWidth="548.0" text="Cursos Asignados " />
+          <TableColumn fx:id="periodoCol" prefWidth="428.0" text="Periodo Lectivo" />
         </columns>
       </TableView>
-      <Button layoutX="792.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Asignar Curso" />
+      <Button fx:id="asignarButton" layoutX="792.0" layoutY="251.0" mnemonicParsing="false" onAction="#asignarCurso" prefHeight="25.0" prefWidth="127.0" text="Asignar Curso" />
    </children>
 </AnchorPane>

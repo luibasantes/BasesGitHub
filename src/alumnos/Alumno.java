@@ -10,13 +10,23 @@ package alumnos;
  * @author Administrador
  */
 public class Alumno {
-    String cedula,nombres,matricula,estado;
+    private String cedula,nombres,matricula,estado;
+    private Nota nota;
 
-    public Alumno(String cedula, String nombres, String matricula, String estado) {
+    public Alumno(String cedula, String nombres, String matricula, String estado,Nota nota) {
         this.cedula = cedula;
         this.nombres = nombres;
         this.matricula = matricula;
         this.estado = estado;
+        this.nota=nota;
+    }
+
+    public Nota getNota() {
+        return nota;
+    }
+
+    public void setNota(Nota nota) {
+        this.nota = nota;
     }
 
     public String getCedula() {
