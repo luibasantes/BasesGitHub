@@ -372,5 +372,44 @@ INSERT Libreta VALUES("0987654323","2016MATE02","0927852895",7,5,7,7,null);
 INSERT Libreta VALUES("0987654324","2016FISC02","0927852897",7,5,0,6,null);
 INSERT Libreta VALUES("0987654327","2016FISC02","0927852897",5,6,0,5.5,null);
 INSERT Libreta VALUES("0987654328","2016FISC02","0927852897",6,10,0,8,null);
+/*QUERYS GENERALES*/
+Select * FROM Cuenta;
+SELECT* FROM Empleado;
+SELECT * FROM Matricula;
+SELECT * FROM telefonoestudiante;
+SELECT * FROM Curso;
+select * from Empleado;
+SELECT * FROM ALUMNOS;
+select * from Departamento;
+Select * from Contrato;
+Select * from Cargo;
+Select * from Materia;
+Select * from pensum;
+Select * from asignacion;
+Select * from Libreta;
+Select * FROM Empleado JOIN Contrato ON Empleado.ID_Empleado=Contrato.Empleado JOIN Cargo ON Cargo.ID_Cargo=Contrato.Cargo;
+/*QUERYS GENERALES*/
 
 ALTER TABLE Libreta DROP COLUMN Libreta.ID_Libreta;
+
+#NO EJECUTAR
+UPDATE Contrato SET codigoNombramiento="CKM2024" WHERE Empleado="0927852896";
+ALTER TABLE Matricula ADD COLUMN Estado varchar(10);
+UPDATE Matricula SET Matricula.periodo_Electivo="2016-2017";
+ALTER TABLE Contrato modify COLUMN Contrato.codigoNombramiento varchar(7) PRIMARY KEY;
+Select a.*,m.NO_Matricula from Alumnos a,Matricula m where a.cedula=m.cedula AND a.nombreA="Ana Paredes";
+ALTER TABLE Alumnos CHANGE telefono telefono_Representante VARCHAR(12);
+DELETE FROM BD_Colegio.telefonoestudiante where cedula='0987654323';
+ALTER TABLE Materia MODIFY COLUMN nombreM varchar(50);
+ALTER TABLE pensum add column PeriodoLectivo varchar(10);
+UPDATE pensum SET PeriodoLectivo="2016-2017";
+
+/*NO EJECUTAR ESTO*/
+Alter Table Cuenta drop foreign key cuenta_ibfk_1;
+Alter Table Cuenta add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
+Alter table libreta drop foreign key libreta_ibfk_1;
+Alter table Libreta add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
+Alter table Matricula drop foreign key matricula_ibfk_2;
+Alter table Matricula add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
+Alter table telefonoestudiante drop foreign key telefonoestudiante_ibfk_1;
+Alter table telefonoestudiante add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;

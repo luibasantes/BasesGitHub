@@ -56,6 +56,25 @@ public class ConsultaNotaCursoController implements Initializable {
         }
     }
     
+    public void llenarComboBox(){
+        cBoxParalelo.getItems().clear();
+        cBoxMateria.getItems().clear();
+        tableNotas.getItems().clear();
+        String nomCurso = (String) cBoxCurso.getValue();
+        try{
+            Conexion.procedure = Conexion.connection.prepareCall("call getParalelos('" + nomCurso + "')");
+            Conexion.result = Conexion.procedure.executeQuery();
+            while (Conexion.result.next())
+                cBoxParalelo.getItems().add(Conexion.result.getString("paralelo"));
+            Conexion.procedure = Conexion.connection.prepareCall("call getMaterias('" + nomCurso + "')");
+            Conexion.result = Conexion.procedure.executeQuery();
+            while (Conexion.result.next())
+                cBoxMateria.getItems().add(Conexion.result.getString("nombreM"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         matricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
@@ -71,13 +90,7 @@ public class ConsultaNotaCursoController implements Initializable {
             Conexion.result = Conexion.procedure.executeQuery();
             while (Conexion.result.next()){
                 cBoxCurso.getItems().add(Conexion.result.getString("nombreC"));
-                if (!cBoxParalelo.getItems().contains(Conexion.result.getString("paralelo")))
-                    cBoxParalelo.getItems().add(Conexion.result.getString("paralelo"));
             }
-            Conexion.procedure = Conexion.connection.prepareCall("{call getMaterias()};");
-            Conexion.result = Conexion.procedure.executeQuery();
-            while (Conexion.result.next())
-                cBoxMateria.getItems().add(Conexion.result.getString("nombreM"));
         }catch (Exception e){
             e.printStackTrace();
         }
