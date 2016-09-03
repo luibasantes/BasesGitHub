@@ -18,7 +18,7 @@
             </Label>
             <GridPane layoutX="18.0" layoutY="182.0" prefHeight="379.0" prefWidth="693.0">
                <children>
-                  <ListView layoutX="230.0" layoutY="74.0" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ListView fx:id="lviewID" layoutX="230.0" layoutY="74.0" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label layoutX="27.0" layoutY="73.0" prefHeight="26.0" prefWidth="221.0" text="Identificación: " GridPane.rowIndex="1">
                      <font>
                         <Font name="Arabic Typesetting" size="22.0" />
@@ -39,9 +39,9 @@
                         <Font name="Arabic Typesetting" size="22.0" />
                      </font>
                   </Label>
-                  <ListView prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ListView prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ListView prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ListView fx:id="lviewNombre" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ListView fx:id="lviewNac" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ListView fx:id="lviewGenero" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label text="Dirección Domiciliaria: " GridPane.rowIndex="5">
                      <font>
                         <Font name="Arabic Typesetting" size="22.0" />
@@ -62,10 +62,10 @@
                         <Font name="Arabic Typesetting" size="22.0" />
                      </font>
                   </Label>
-                  <ListView prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <ListView prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <ListView prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <ListView prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <ListView fx:id="lviewDir" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ListView fx:id="lviewTelef" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <ListView fx:id="lviewDisca" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <ListView fx:id="lviewEstadoC" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
@@ -101,9 +101,9 @@
                         <Font name="Arabic Typesetting" size="22.0" />
                      </font>
                   </Label>
-                  <ListView prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" />
-                  <ListView prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ListView prefHeight="64.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ListView fx:id="lviewEstudios" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" />
+                  <ListView fx:id="lviewTitulo" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ListView fx:id="lviewCargo" prefHeight="64.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Trabaja en la Institución desde:" GridPane.rowIndex="3">
                      <font>
                         <Font size="16.0" />
@@ -124,10 +124,10 @@
                         <Font name="Arabic Typesetting" size="22.0" />
                      </font>
                   </Label>
-                  <ListView prefHeight="30.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ListView prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ListView prefHeight="30.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <ListView prefHeight="109.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <ListView fx:id="lviewTrabaja" prefHeight="30.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ListView fx:id="lviewSueldo" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ListView fx:id="lviewDepartamento" prefHeight="30.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ListView fx:id="lviewJornada" prefHeight="109.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="281.0" />
@@ -143,12 +143,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Button layoutX="694.0" layoutY="132.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.0" text="Buscar" />
-            <TextField layoutX="232.0" layoutY="80.0" prefHeight="25.0" prefWidth="708.0" />
+            <Button fx:id="btnBuscar" layoutX="694.0" layoutY="132.0" mnemonicParsing="false" onAction="#buscarEmpleado" prefHeight="25.0" prefWidth="137.0" text="Buscar" />
+            <TextField fx:id="txtBusqueda" layoutX="232.0" layoutY="80.0" prefHeight="25.0" prefWidth="708.0" />
             <Label layoutX="143.0" layoutY="85.0" text="Busqueda:" />
-            <RadioButton layoutX="987.0" layoutY="81.0" mnemonicParsing="false" text="Por ID" />
-            <RadioButton layoutX="1099.0" layoutY="80.0" mnemonicParsing="false" text="Por cedula" />
-            <RadioButton layoutX="1233.0" layoutY="80.0" mnemonicParsing="false" text="Por nombres" />
+            <RadioButton fx:id="rbtnID" layoutX="987.0" layoutY="81.0" mnemonicParsing="false" text="Por ID" />
+            <RadioButton fx:id="rbtnCedula" layoutX="1099.0" layoutY="80.0" mnemonicParsing="false" text="Por cedula" />
+            <RadioButton fx:id="rbtnNombres" layoutX="1233.0" layoutY="80.0" mnemonicParsing="false" text="Por nombres" />
          </children>
       </AnchorPane>
    </content>

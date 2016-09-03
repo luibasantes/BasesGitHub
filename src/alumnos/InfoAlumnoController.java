@@ -58,12 +58,6 @@ public class InfoAlumnoController implements Initializable {
         lviewEstadoMat.getItems().clear();
         lviewInstitucion.getItems().clear();
         
-        /*
-        Connection myConn = null;
-        Statement myStmt = null;
-        ResultSet myRs = null;
-        */
-        
         try{
             if(rbtnNombres.isSelected()){
                 String nomAlumno = txtBusqueda.getText().trim();

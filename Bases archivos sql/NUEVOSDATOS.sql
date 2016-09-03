@@ -425,9 +425,3 @@ Alter table Matricula drop foreign key matricula_ibfk_2;
 Alter table Matricula add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
 Alter table telefonoestudiante drop foreign key telefonoestudiante_ibfk_1;
 Alter table telefonoestudiante add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
-
-SELECT * FROM matricula;
-SELECT * FROM Alumnos;
-SELECT * FROM curso;
-SELECT * FROM pensum;
-select descripcion from Departamento;

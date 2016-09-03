@@ -75,7 +75,7 @@ public class ProfesorController implements Initializable {
     @FXML
     public void consultarDepartamento(ActionEvent event) throws IOException{
         loaderPane.getChildren().clear();
-        loaderPane.getChildren().add(FXMLLoader.load(getClass().getResource("InfoDepartamento.fxml")));
+        loaderPane.getChildren().add(FXMLLoader.load(getClass().getResource("InfoDepartamentoProfe.fxml")));
     }
     
     @FXML
