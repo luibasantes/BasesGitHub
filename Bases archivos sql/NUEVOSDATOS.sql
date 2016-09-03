@@ -384,6 +384,12 @@ INSERT Libreta VALUES("0987654323","2016MATE02","0927852895",7,5,7,7,null);
 INSERT Libreta VALUES("0987654324","2016FISC02","0927852897",7,5,0,6,null);
 INSERT Libreta VALUES("0987654327","2016FISC02","0927852897",5,6,0,5.5,null);
 INSERT Libreta VALUES("0987654328","2016FISC02","0927852897",6,10,0,8,null);
+
+#DATOS DE TELEFONOS DE EMPLEADOS
+INSERT telefonoempleado VALUES("0981488883","0927852895");
+INSERT telefonoempleado VALUES("052731855","0927852895");
+
+
 /*QUERYS GENERALES*/
 Select * FROM Cuenta;
 SELECT * FROM Empleado;
@@ -427,3 +433,9 @@ Alter table Matricula drop foreign key matricula_ibfk_2;
 Alter table Matricula add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
 Alter table telefonoestudiante drop foreign key telefonoestudiante_ibfk_1;
 Alter table telefonoestudiante add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
+
+SELECT * FROM matricula;
+SELECT * FROM Alumnos;
+SELECT * FROM curso;
+SELECT * FROM pensum;
+select descripcion from Departamento;
