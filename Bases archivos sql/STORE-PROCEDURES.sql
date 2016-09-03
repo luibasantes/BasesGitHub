@@ -255,3 +255,23 @@ CREATE PROCEDURE getNombre(IN ID VARCHAR(15)) BEGIN
 	SELECT nombreA FROM alumnos WHERE cedula = ID;
 END;
 /
+DELIMITER /
+CREATE PROCEDURE getRector() BEGIN
+Select Empleado.NombreCompleto from Contrato,Cargo,Empleado where Contrato.Empleado=Empleado.ID_Empleado and Cargo.ID_Cargo=Contrato.Cargo and Cargo.descripcion="Rector";
+END;
+/
+DELIMITER /
+CREATE PROCEDURE getViceRector() BEGIN
+Select Empleado.NombreCompleto from Contrato,Cargo,Empleado where Contrato.Empleado=Empleado.ID_Empleado and Cargo.ID_Cargo=Contrato.Cargo and Cargo.descripcion="Vicerrector"; 
+END;
+/
+DELIMITER /
+CREATE PROCEDURE getContarAlumnos(IN x VARCHAR(10)) BEGIN
+Select count(NO_Matricula) from Matricula where periodo_Electivo=x;
+END;
+/
+DELIMITER /
+CREATE PROCEDURE getContarProfesores() BEGIN
+Select count(Empleado.ID_Empleado) from Contrato,Cargo,Empleado where Contrato.Empleado=Empleado.ID_Empleado and Cargo.ID_Cargo=Contrato.Cargo and Cargo.ID_Cargo LIKE "PROF%";
+END;
+/

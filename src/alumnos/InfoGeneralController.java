@@ -47,30 +47,24 @@ public class InfoGeneralController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             Calendar fecha = Calendar.getInstance();
-            Conexion.statement=Conexion.connection.createStatement();
             int x=fecha.get(Calendar.YEAR);
             periodo.setText("PERIODO LECTIVO:"+x+"-"+(x+1));
-            Conexion.result=Conexion.statement.executeQuery("Select Empleado.NombreCompleto from Contrato,Cargo,Empleado "
-                    + "where Contrato.Empleado=Empleado.ID_Empleado and Cargo.ID_Cargo=Contrato.Cargo "
-                    + "and Cargo.descripcion=\"Rector\" ");
+            Conexion.procedure=Conexion.connection.prepareCall("{call getRector()}");
+            Conexion.result=Conexion.procedure.executeQuery();
             Conexion.result.next();
             rector.setText("Rector:\t"+Conexion.result.getString("NombreCompleto"));
-            Conexion.statement=Conexion.connection.createStatement();
-            Conexion.result=Conexion.statement.executeQuery("Select Empleado.NombreCompleto from Contrato,Cargo,Empleado "
-                    + "where Contrato.Empleado=Empleado.ID_Empleado and Cargo.ID_Cargo=Contrato.Cargo "
-                    + "and Cargo.descripcion=\"Vicerrector\" ");
+            Conexion.procedure=Conexion.connection.prepareCall("{call getViceRector()}");
+            Conexion.result=Conexion.procedure.executeQuery();
             Conexion.result.next();
-            vice.setText("VICERECTOR:\t"+Conexion.result.getString("NombreCompleto"));
-            Conexion.statement=Conexion.connection.createStatement();
-            Conexion.result=Conexion.statement.executeQuery("Select count(NO_Matricula) from Matricula where periodo_ELectivo="+"\""+x+"-"+(x+1)+"\"");
+            vice.setText("Vicerector:\t"+Conexion.result.getString("NombreCompleto"));
+            Conexion.procedure=Conexion.connection.prepareCall("{call getContarAlumnos('"+ x +"-"+(x+1)+"')}");
+            Conexion.result=Conexion.procedure.executeQuery();
             Conexion.result.next();
-            estudiantes.setText("NO.DE ESTUDIANTES ACTUALES:\t"+Conexion.result.getString(1));
-            Conexion.statement=Conexion.connection.createStatement();
-            Conexion.result=Conexion.statement.executeQuery("Select count(Empleado.ID_Empleado) from Contrato,Cargo,Empleado "
-                    + "where Contrato.Empleado=Empleado.ID_Empleado and Cargo.ID_Cargo=Contrato.Cargo "
-                    + "and Cargo.ID_Cargo LIKE 'PROF%'");
+            estudiantes.setText("NO.DE ESTUDIANTES ACTUALES: "+Conexion.result.getString(1));
+            Conexion.procedure=Conexion.connection.prepareCall("{call getContarProfesores()}");
+            Conexion.result=Conexion.procedure.executeQuery();
             Conexion.result.next();
-            profesores.setText("NO.DE PROFESORES ACTUALES:\t"+Conexion.result.getString(1));
+            profesores.setText("NO.DE PROFESORES ACTUALES: "+Conexion.result.getString(1));
             
         } catch (SQLException ex) {
             Logger.getLogger(InfoGeneralController.class.getName()).log(Level.SEVERE, null, ex);
