@@ -426,8 +426,8 @@ Alter table Matricula add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on de
 Alter table telefonoestudiante drop foreign key telefonoestudiante_ibfk_1;
 Alter table telefonoestudiante add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
 
-SELECT m.ID_Materia, m.nombreM, e.NombreCompleto FROM curso c JOIN pensum p JOIN materia m JOIN Asignacion a JOIN empleado e ON m.ID_Materia = p.ID_Materia AND c.ID_Curso = p.ID_curso AND a.ID_Materia = m.ID_Materia AND e.ID_Empleado=a.ID_Empleado;
 SELECT * FROM matricula;
 SELECT * FROM Alumnos;
 SELECT * FROM curso;
 SELECT * FROM pensum;
+select descripcion from Departamento;

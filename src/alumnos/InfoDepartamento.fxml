@@ -21,18 +21,18 @@
                   <Font name="Bell MT" size="26.0" />
                </font>
             </Label>
-            <Button layoutX="482.0" layoutY="133.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="166.0" text="Mostrar" />
+            <Button fx:id="mostrar" layoutX="482.0" layoutY="133.0" mnemonicParsing="false" onAction="#mostrar" prefHeight="22.0" prefWidth="166.0" text="Mostrar" />
             <Button layoutX="698.0" layoutY="133.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="152.0" text="Cancelar" />
-            <ComboBox layoutX="379.0" layoutY="59.0" prefHeight="34.0" prefWidth="514.0" />
+            <ComboBox fx:id="cBoxDep" layoutX="379.0" layoutY="59.0" prefHeight="34.0" prefWidth="514.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="331.0" prefWidth="1335.0">
          <children>
-            <TableView layoutX="-2.0" layoutY="26.0" prefHeight="470.0" prefWidth="1445.0">
+            <TableView fx:id="tablaT" layoutX="-2.0" layoutY="26.0" prefHeight="470.0" prefWidth="1445.0">
                <columns>
-                  <TableColumn prefWidth="248.0" text="Id Empleado" />
-                  <TableColumn minWidth="0.0" prefWidth="506.0" text="Nombres" />
-                  <TableColumn prefWidth="690.0" text="Cargo" />
+                  <TableColumn fx:id="columIdEmpleado" prefWidth="248.0" text="Id Empleado" />
+                  <TableColumn fx:id="columNombreC" minWidth="0.0" prefWidth="506.0" text="Nombres" />
+                  <TableColumn fx:id="columCargo" prefWidth="690.0" text="Cargo" />
                </columns>
             </TableView>
          </children>

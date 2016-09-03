@@ -275,3 +275,19 @@ CREATE PROCEDURE getContarProfesores() BEGIN
 Select count(Empleado.ID_Empleado) from Contrato,Cargo,Empleado where Contrato.Empleado=Empleado.ID_Empleado and Cargo.ID_Cargo=Contrato.Cargo and Cargo.ID_Cargo LIKE "PROF%";
 END;
 /
+DELIMITER /
+CREATE PROCEDURE getInfoEmpleado(IN id Varchar(20)) BEGIN
+Select e.ID_Empleado,e.NombreCompleto,e.fecha_Nacimiento,e.genero,e.direccion,e.telefono,e.discapacidad,e.nivel_EStudios,e.titulo,Car.descripcion,e.estado_Civil,sum(c.sueldo),d.Descripcion,e.jornada
+ From Empleado e,Contrato c,Departamento d, Cargo car where e.ID_Empleado = c.Empleado and c.Departamento=d.ID_Departamento and Car.ID_Cargo = c.Cargo and e.ID_Empleado=id GROUP BY c.Empleado;
+END;
+/
+DELIMITER /
+CREATE procedure getDepartamentos() BEGIN
+select descripcion from Departamento ;
+END;
+/
+DELIMITER /
+CREATE procedure getInfoDepartamentos(In descripcionD VARCHAR(50)) BEGIN
+SELECT empleado.ID_Empleado,empleado.NombreCompleto,cargo.descripcion FROM empleado,cargo,departamento,contrato where empleado.ID_Empleado=contrato.Empleado and cargo.ID_Cargo=contrato.Cargo and departamento.ID_Departamento=contrato.Departamento and Departamento.descripcion=descripcionD;
+END;
+/
