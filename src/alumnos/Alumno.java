@@ -12,6 +12,7 @@ package alumnos;
 public class Alumno {
     private String cedula,nombres,matricula,estado;
     private Nota nota;
+    
 
     public Alumno(String cedula, String nombres, String matricula, String estado,Nota nota) {
         this.cedula = cedula;

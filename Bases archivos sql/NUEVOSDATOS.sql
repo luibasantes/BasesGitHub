@@ -403,6 +403,8 @@ Select * FROM Empleado JOIN Contrato ON Empleado.ID_Empleado=Contrato.Empleado J
 /*QUERYS GENERALES*/
 
 ALTER TABLE Libreta DROP COLUMN Libreta.ID_Libreta;
+ALTER TABLE Libreta DROP COLUMN Libreta.examen_Recuperacion;
+ALTER TABLE Empleado DROP COLUMN Empleado.telefono;
 
 #NO EJECUTAR
 UPDATE Contrato SET codigoNombramiento="CKM2024" WHERE Empleado="0927852896";

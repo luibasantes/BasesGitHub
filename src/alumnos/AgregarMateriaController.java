@@ -94,7 +94,7 @@ public class AgregarMateriaController implements Initializable {
     
     public void asignarCurso(ActionEvent e){
         String[] cursoArray=((String) cursoBox.getValue()).split(",");
-        Curso c=new Curso(cursoArray[0],cursoArray[1],PeriodoLectivo.periodo);
+        Curso c=new Curso(null,cursoArray[0],cursoArray[1],PeriodoLectivo.periodo);
         tablaCursos.getItems().add(c);
         cursos.add(c);
         asignarButton.setDisable(true);

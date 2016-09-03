@@ -18,6 +18,18 @@ Select NO_Matricula From Matricula where Matricula.periodo_Electivo=periodo;
 END;|
 
 
+CREATE PROCEDURE mostrarMaterias(IN age VARCHAR(10))
+BEGIN
+Select Materia.nombreM  FROM Materia where Materia.ID_Materia LIKE concat(age,"%") AND Materia.estado="ACTIVO"; 
+END;|
+
+
+CREATE PROCEDURE mostrarCursosAsignados(IN idMateria VARCHAR(10),IN age VARCHAR(4))
+BEGIN
+	Select c.ID_Curso,c.nombreC,c.paralelo,c.periodoLectivo,c.estado  FROM Curso c JOIN Pensum p JOIN Materia m ON  c.ID_Curso=p.ID_Curso and p.ID_Materia=m.ID_Materia where m.ID_Materia=idMateria and m.ID_Materia LIKE concat(age,"%");
+END;|
+
+
 CREATE PROCEDURE ingresarAlumno(
 IN cedula VARCHAR(10),
 IN nombre VARCHAR(40),
@@ -163,7 +175,7 @@ BEGIN
 END;|
 
 
-DROP PROCEDURE verificarCodigoMateria|
+
 CREATE PROCEDURE verificarCodigoMateria(IN codigoMateria varchar(10),IN age varchar(4))
 BEGIN
 	IF codigoMateria IN (Select Materia.ID_Materia FROM Materia where Materia.ID_Materia LIKE concat(age,"%")) THEN
@@ -173,7 +185,7 @@ BEGIN
 	END IF;
 END;|
 
-DROP PROCEDURE asignarMaterias|
+
 CREATE PROCEDURE asignarMaterias(IN codigoMateria VARCHAR(50), IN nombreMateria VARCHAR(50),IN nombreCurso VARCHAR(50), IN paralelo VARCHAR(1), IN periodo VARCHAR(10))
 BEGIN
 	IF codigoMateria NOT IN (Select ID_Materia FROM Materia where Materia.ID_Materia LIKE concat(substring(periodo,1,4),"%")) THEN
@@ -183,6 +195,38 @@ BEGIN
 END;|
 
 
+CREATE PROCEDURE getMateria(IN nombre VARCHAR(50),IN age VARCHAR(4))
+BEGIN
+	Select Materia.ID_Materia FROM Materia Where Materia.nombreM=nombre AND Materia.ID_Materia LIKE concat(age,"%");
+END;|
+
+
+CREATE PROCEDURE inactivarMateria(IN idMateria VARCHAR(50))
+BEGIN
+	UPDATE Materia SET Materia.estado="INACTIVO" where Materia.ID_Materia=idMateria;
+    DELETE FROM Asignacion where Asignacion.ID_Materia=idMateria;
+    DELETE FROM Libreta WHERE Libreta.ID_Materia=idMateria;
+END;|
+#libreta.ID_Empleado=(Select a.ID_Empleado FROM Libreta l JOIN Materia m JOIN Asignacion a ON l.ID_Materia=m.ID_Materia AND a.ID_Materia=m.ID_Materia WHERE a.ID_Materia=idMateria AND a.ID_Curso=(Select Curso.ID_Curso FROM Curso where Curso.nombreC=curso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo) )
+
+DROP PROCEDURE modificarNotas|
+CREATE PROCEDURE modificarNotas(
+IN matricula VARCHAR(10),
+IN idMateria VARCHAR(10),
+IN curso VARCHAR(50),
+IN paralelo VARCHAR(1), 
+IN nota1 FLOAT,
+IN nota2 FLOAT,
+IN sup FLOAT,
+In prom FLOAT,
+In periodo VARCHAR(10)
+)
+BEGIN
+	DECLARE idEmp VARCHAR(15);
+    SET idEmp= (Select distinct a.ID_Empleado FROM Libreta l JOIN Materia m JOIN Asignacion a ON l.ID_Materia=m.ID_Materia AND a.ID_Materia=m.ID_Materia WHERE a.ID_Materia=idMateria AND a.ID_Curso=(Select Curso.ID_Curso FROM Curso where Curso.nombreC=curso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo) );
+    UPDATE BD_Colegio.libreta SET libreta.nota1=nota1,libreta.nota2=nota2,libreta.notaSup=sup, libreta.promedio=prom
+    WHERE libreta.cedula=(Select Matricula.cedula FROM Matricula WHERE Matricula.NO_Matricula=matricula) AND Libreta.ID_Materia=idMateria AND libreta.ID_Empleado=idEmp;
+END;|
 #---------PROCEDURES DE JOE-----------------------------------------------------------------------------------------
 DELIMITER /
 CREATE PROCEDURE buscarAlumno(IN dato varchar(50), IN tipoBusqueda CHAR) BEGIN
@@ -221,8 +265,9 @@ END;
 /
 
 DELIMITER /
-CREATE PROCEDURE mostrarNotasCurso(IN nomCurso VARCHAR(50), IN paralelo CHAR, IN nomMateria VARCHAR(30)) BEGIN
-	SELECT ma.NO_Matricula, a.nombreA, l.nota1, l.nota2, l.promedio, l.notaSup, ma.estado FROM curso c JOIN pensum p JOIN materia m JOIN libreta l JOIN matricula ma JOIN alumnos a ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND m.ID_Materia = l.ID_materia AND l.cedula = ma.cedula AND ma.cedula = a.cedula AND c.nombreC = nomCurso AND c.paralelo = paralelo AND m.nombreM = nomMateria;
+DROP PROCEDURE mostrarNotasCurso/
+CREATE PROCEDURE mostrarNotasCurso(IN nomCurso VARCHAR(50), IN paralelo CHAR, IN nomMateria VARCHAR(30),IN periodo VARCHAR(10)) BEGIN
+	SELECT ma.NO_Matricula, a.nombreA, l.nota1, l.nota2, l.promedio, l.notaSup, ma.estado, m.ID_Materia, m.nombreM FROM curso c JOIN pensum p JOIN materia m JOIN libreta l JOIN matricula ma JOIN alumnos a ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND m.ID_Materia = l.ID_materia AND l.cedula = ma.cedula AND ma.cedula = a.cedula AND c.nombreC = nomCurso AND c.paralelo = paralelo AND m.nombreM = nomMateria where c.periodoLectivo=periodo AND m.ID_Materia LIKE concat(substring(periodo,1,4),"%");
 END;
 /
 
@@ -282,7 +327,7 @@ END;
 
 DELIMITER /
 CREATE PROCEDURE getInfoEmpleado(IN id Varchar(20)) BEGIN
-Select e.ID_Empleado,e.NombreCompleto,e.fecha_Nacimiento,e.genero,e.direccion,e.telefono,e.discapacidad,e.nivel_EStudios,e.titulo,Car.descripcion,e.estado_Civil,sum(c.sueldo),d.Descripcion,e.jornada
+Select e.ID_Empleado,e.NombreCompleto,e.fecha_Nacimiento,e.genero,e.direccion,e.discapacidad,e.nivel_EStudios,e.titulo,Car.descripcion,e.estado_Civil,sum(c.sueldo),d.Descripcion,e.jornada
  From Empleado e,Contrato c,Departamento d, Cargo car where e.ID_Empleado = c.Empleado and c.Departamento=d.ID_Departamento and Car.ID_Cargo = c.Cargo and e.ID_Empleado=id GROUP BY c.Empleado;
 END;
 /

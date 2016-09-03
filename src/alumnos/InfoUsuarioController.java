@@ -39,15 +39,18 @@ public class InfoUsuarioController implements Initializable {
             fechaN.getItems().add(Conexion.result.getString(3));
             genero.getItems().add(Conexion.result.getString(4));
             dir.getItems().add(Conexion.result.getString(5));
-            tele.getItems().add(Conexion.result.getString(6));
-            disca.getItems().add(Conexion.result.getString(7));
-            estu.getItems().add(Conexion.result.getString(8));
-            titulo.getItems().add(Conexion.result.getString(9));
-            cargo.getItems().add(Conexion.result.getString(10));
-            estado.getItems().add(Conexion.result.getString(11));
-            sueldo.getItems().add(Conexion.result.getString(12));
-            dep.getItems().add(Conexion.result.getString(13));
-            jornada.getItems().add(Conexion.result.getString(14));
+            disca.getItems().add(Conexion.result.getString(6));
+            estu.getItems().add(Conexion.result.getString(7));
+            titulo.getItems().add(Conexion.result.getString(8));
+            cargo.getItems().add(Conexion.result.getString(9));
+            estado.getItems().add(Conexion.result.getString(10));
+            sueldo.getItems().add(Conexion.result.getString(11));
+            dep.getItems().add(Conexion.result.getString(12));
+            jornada.getItems().add(Conexion.result.getString(13));
+            Conexion.procedure=Conexion.connection.prepareCall("{call mostrarTelefonoEmpleado('"+Usuario.Id+"')}");
+            Conexion.result=Conexion.procedure.executeQuery();
+            while(Conexion.result.next())
+                tele.getItems().add(Conexion.result.getString(1));
         } catch (SQLException ex) {
             Logger.getLogger(InfoUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -19,7 +19,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField layoutX="320.0" layoutY="228.0" prefHeight="25.0" prefWidth="593.0" />
+      <TextField fx:id="nombreF" layoutX="320.0" layoutY="228.0" prefHeight="25.0" prefWidth="593.0" />
       <Button layoutX="603.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
       <Label layoutX="105.0" layoutY="172.0" text="Codigo Materia: ">
          <font>
@@ -31,13 +31,14 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField layoutX="320.0" layoutY="172.0" prefHeight="25.0" prefWidth="593.0" />
-      <Button layoutX="345.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Eliminar Materia" />
-      <ComboBox layoutX="320.0" layoutY="106.0" prefHeight="25.0" prefWidth="432.0" />
-      <TableView layoutX="54.0" layoutY="321.0" prefHeight="200.0" prefWidth="922.0">
+      <TextField fx:id="codigoF" layoutX="320.0" layoutY="172.0" prefHeight="25.0" prefWidth="593.0" />
+      <Button layoutX="345.0" layoutY="553.0" mnemonicParsing="false" onAction="#eliminarMateria" prefHeight="25.0" prefWidth="181.0" text="Eliminar Materia" />
+      <ComboBox fx:id="materiasBox" layoutX="320.0" layoutY="106.0" onAction="#mostrarCursosAsignados" prefHeight="25.0" prefWidth="432.0" />
+      <TableView fx:id="tablaCursos" layoutX="54.0" layoutY="321.0" prefHeight="200.0" prefWidth="922.0">
          <columns>
-            <TableColumn prefWidth="548.0" text="Cursos Asignados " />
-            <TableColumn prefWidth="428.0" text="Periodo Lectivo" />
+            <TableColumn fx:id="nameCol" prefWidth="548.0" text="Cursos Asignados " />
+            <TableColumn fx:id="parCol" prefWidth="75.0" text="Paralelo" />
+            <TableColumn fx:id="periodoCol" prefWidth="300.0" text="Periodo Lectivo" />
          </columns>
       </TableView>
       <Label layoutX="101.0" layoutY="228.0" text="Nombre Materia: ">

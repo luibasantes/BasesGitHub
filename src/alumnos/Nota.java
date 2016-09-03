@@ -23,8 +23,8 @@ public class Nota {
         this.matricula = matricula;
         this.nombres = nombres;
         this.estado = estado;
-    }    
-
+    }      
+    
     public String getIdMateria() {
         return idMateria;
     }
@@ -69,8 +69,30 @@ public class Nota {
         return prom;
     }
 
-    public void setProm(String prom) {
-        this.prom = prom;
+    public void setProm() {
+        double n1=Double.parseDouble(this.fQui);
+        double n2=Double.parseDouble(this.sQui);
+        double sup=Double.parseDouble(this.sup);
+        if(sup==0){
+            double prom=(n1+n2)/2;
+            prom=Math.round(prom*100);
+            prom=prom/100;
+            this.prom =""+prom;
+        }
+        else{
+            if(sup==7)
+                this.prom="7.00";
+            else if(sup>n1 || sup>n2){
+                double prom=(Math.max(n1, n2)+sup)/2;
+                this.prom=""+prom;
+            }
+            else{
+                double prom=(n1+n2)/2;
+                prom=Math.round(prom*100);
+                prom=prom/100;
+                this.prom =""+prom;
+            }
+        }
     }
 
     public String getSup() {
@@ -78,7 +100,10 @@ public class Nota {
     }
 
     public void setSup(String sup) {
-        this.sup = sup;
+        if(Double.parseDouble(sup)>=7)
+            this.sup = "7";
+        else
+            this.sup=sup;
     }
 
     public String getMatricula() {
@@ -101,8 +126,14 @@ public class Nota {
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado() {
+        if(Double.parseDouble(this.prom)>=7)
+            this.estado="APROBADO";
+        else if(Double.parseDouble(this.sup)==7){
+            this.estado="APROBADO";
+        }
+        else
+            this.estado="REPROBADO";
     }
     
     

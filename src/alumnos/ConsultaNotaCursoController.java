@@ -45,7 +45,7 @@ public class ConsultaNotaCursoController implements Initializable {
         String paralelo = (String) cBoxParalelo.getValue();
         String nomMateria = (String) cBoxMateria.getValue();
         try{
-            Conexion.procedure = Conexion.connection.prepareCall("{call mostrarNotasCurso('"+ nomCurso + "','" + paralelo + "','" + nomMateria +"')}");
+            Conexion.procedure = Conexion.connection.prepareCall("{call mostrarNotasCurso('"+ nomCurso + "','" + paralelo + "','" + nomMateria +"','" + PeriodoLectivo.periodo +"')}");
             Conexion.result = Conexion.procedure.executeQuery();
             while (Conexion.result.next()){
                 Nota n = new Nota("", "", Conexion.result.getString("nota1"), Conexion.result.getString("nota2"), Conexion.result.getString("promedio"), Conexion.result.getString("notaSup"), "", Conexion.result.getString("NO_Matricula"), Conexion.result.getString("nombreA"), Conexion.result.getString("estado"));
@@ -66,7 +66,7 @@ public class ConsultaNotaCursoController implements Initializable {
             Conexion.result = Conexion.procedure.executeQuery();
             while (Conexion.result.next())
                 cBoxParalelo.getItems().add(Conexion.result.getString("paralelo"));
-            Conexion.procedure = Conexion.connection.prepareCall("call getMaterias('" + nomCurso + "')");
+            Conexion.procedure = Conexion.connection.prepareCall("call getMaterias('" + nomCurso + "','" + PeriodoLectivo.periodo+ "')");
             Conexion.result = Conexion.procedure.executeQuery();
             while (Conexion.result.next())
                 cBoxMateria.getItems().add(Conexion.result.getString("nombreM"));

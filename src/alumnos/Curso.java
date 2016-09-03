@@ -24,10 +24,11 @@ public class Curso {
         this.capacidad=capacidad;
     }
     
-    public Curso(String nombreCurso,String paralelo,String periodo){
+    public Curso(String idCurso,String nombreCurso,String paralelo,String periodo){
         this.nombreCurso=nombreCurso;
         this.paralelo=paralelo;
         this.periodo=periodo;
+        this.idCurso=idCurso;
     }
     
     public String getCapacidad() {
