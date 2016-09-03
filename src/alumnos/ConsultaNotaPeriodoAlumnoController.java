@@ -30,17 +30,13 @@ import javafx.stage.StageStyle;
  *
  * @author luiscruz
  */
-public class ConsultaNotaPeriodoController implements Initializable {
+public class ConsultaNotaPeriodoAlumnoController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
     
     ToggleGroup group=new ToggleGroup();
-    @FXML
-    public RadioButton rbtnNombres, rbtnCedula, rbtnMatricula;
-    @FXML
-    public TextField txtBusqueda;
     @FXML
     public Button btnBuscar;
     @FXML
@@ -58,34 +54,17 @@ public class ConsultaNotaPeriodoController implements Initializable {
     public void mostrarNotas(){
         tableNotas.getItems().clear();
         try{
-            String periodo = (String)cBoxPeriodos.getValue();
-            if(rbtnNombres.isSelected()){
-                String nomAlumno = txtBusqueda.getText().trim();
-                Conexion.procedure = Conexion.connection.prepareCall("{call mostrarNotasPeriodo('" + nomAlumno + "','" + periodo + "','" + 1 + "')};");
+            Conexion.procedure = Conexion.connection.prepareCall("{call getNombre('" + Usuario.Id + "')}");
+            Conexion.result = Conexion.procedure.executeQuery();
+            if (Conexion.result.next()){
+                String nombre = Conexion.result.getString("nombreA");
+                System.out.println(Usuario.tipo);
+                Conexion.procedure = Conexion.connection.prepareCall("{call mostrarNotasPeriodo('" + nombre + "','" + PeriodoLectivo.periodo + "','" + (Usuario.tipo + 1)  + "')}");
                 Conexion.result = Conexion.procedure.executeQuery();
-            }else if (rbtnCedula.isSelected()){
-                String cedula = txtBusqueda.getText().trim();
-                Conexion.procedure = Conexion.connection.prepareCall("{call mostrarNotasPeriodo('" + cedula + "','" + periodo + "','" + 2 + "')};");
-                Conexion.result = Conexion.procedure.executeQuery();
-            }else if (rbtnMatricula.isSelected()){
-                String matricula = txtBusqueda.getText();
-                Conexion.procedure = Conexion.connection.prepareCall("{call mostrarNotasPeriodo('" + matricula + "','" + periodo + "','" + 3 + "')};");
-                Conexion.result = Conexion.procedure.executeQuery();
-            }
-            if(Conexion.result.next()){
-                Conexion.result.beforeFirst();
                 while (Conexion.result.next()){
                     Nota n = new Nota(Conexion.result.getString("ID_Materia"), Conexion.result.getString("nombreM"), Conexion.result.getString("nota1"), Conexion.result.getString("nota2"), Conexion.result.getString("promedio"), Conexion.result.getString("notaSup"),Conexion.result.getString("nombreC")+"-"+Conexion.result.getString("paralelo"), "", "", "");
                     tableNotas.getItems().add(n);
                 }
-            }
-            else{
-                Alert error=new Alert(Alert.AlertType.ERROR);
-                error.setTitle("Error de Ingreso");
-                error.setHeaderText("Informacion no encontrada");
-                error.setContentText("No se ha encontrado ningun registro con la informacion ingresada");
-                error.initStyle(StageStyle.UTILITY);
-                error.showAndWait();
             }
         }catch (Exception e){
             e.printStackTrace();

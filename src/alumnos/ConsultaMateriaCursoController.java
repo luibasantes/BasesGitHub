@@ -41,6 +41,7 @@ public class ConsultaMateriaCursoController implements Initializable {
     
     @FXML
     public void mostrarMateria(){
+        tableMateria.getItems().clear();
         String cadena = (String)cBoxCursos.getValue();
         String cadenas[] = cadena.split(",");
         try{

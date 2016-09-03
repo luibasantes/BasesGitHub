@@ -163,6 +163,26 @@ BEGIN
 END;|
 
 
+DROP PROCEDURE verificarCodigoMateria|
+CREATE PROCEDURE verificarCodigoMateria(IN codigoMateria varchar(10),IN age varchar(4))
+BEGIN
+	IF codigoMateria IN (Select Materia.ID_Materia FROM Materia where Materia.ID_Materia LIKE concat(age,"%")) THEN
+		Select 1;
+	ELSE
+		Select 0;
+	END IF;
+END;|
+
+DROP PROCEDURE asignarMaterias|
+CREATE PROCEDURE asignarMaterias(IN codigoMateria VARCHAR(50), IN nombreMateria VARCHAR(50),IN nombreCurso VARCHAR(50), IN paralelo VARCHAR(1), IN periodo VARCHAR(10))
+BEGIN
+	IF codigoMateria NOT IN (Select ID_Materia FROM Materia where Materia.ID_Materia LIKE concat(substring(periodo,1,4),"%")) THEN
+		INSERT Materia Values(codigoMateria,nombreMateria,"ACTIVO");
+	END IF;
+    INSERT INTO Pensum VALUES((Select Curso.ID_Curso FROM Curso WHERE Curso.nombreC=nombreCurso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo),codigoMateria,periodo);
+END;|
+
+
 #---------PROCEDURES DE JOE-----------------------------------------------------------------------------------------
 DELIMITER /
 CREATE PROCEDURE buscarAlumno(IN dato varchar(50), IN tipoBusqueda CHAR) BEGIN
@@ -201,13 +221,7 @@ END;
 /
 
 DELIMITER /
-CREATE PROCEDURE getMaterias() BEGIN
-	SELECT nombreM FROM materia;
-END;
-/
-
-DELIMITER /
-CREATE PROCEDURE mostrarNotasCurso(IN nomCurso VARCHAR(15), IN paralelo CHAR, IN nomMateria VARCHAR(30)) BEGIN
+CREATE PROCEDURE mostrarNotasCurso(IN nomCurso VARCHAR(50), IN paralelo CHAR, IN nomMateria VARCHAR(30)) BEGIN
 	SELECT ma.NO_Matricula, a.nombreA, l.nota1, l.nota2, l.promedio, l.notaSup, ma.estado FROM curso c JOIN pensum p JOIN materia m JOIN libreta l JOIN matricula ma JOIN alumnos a ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND m.ID_Materia = l.ID_materia AND l.cedula = ma.cedula AND ma.cedula = a.cedula AND c.nombreC = nomCurso AND c.paralelo = paralelo AND m.nombreM = nomMateria;
 END;
 /
@@ -218,3 +232,26 @@ CREATE PROCEDURE getPeriodos() BEGIN
 END;
 /
 
+DELIMITER /
+CREATE PROCEDURE getCursos(IN periodo VARCHAR(10)) BEGIN
+	SELECT nombreC FROM curso where Curso.estado = "ACTIVO" AND periodoLectivo = periodo;
+END;
+/
+
+DELIMITER /
+CREATE PROCEDURE getParalelos(IN nomCurso VARCHAR(25), IN periodo VARCHAR(10)) BEGIN
+	SELECT paralelo FROM Curso WHERE nombreC = nomCurso AND periodoLectivo = periodo AND estado = "ACTIVO";
+END;
+/
+
+DELIMITER /
+CREATE PROCEDURE getMaterias(IN nomCurso VARCHAR(25), IN periodo VARCHAR(10)) BEGIN
+	SELECT m.nombreM FROM Curso c JOIN Materia m JOIN pensum p ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND c.nombreC = nomCurso AND c.periodoLectivo = periodo;
+END;
+/
+
+DELIMITER /
+CREATE PROCEDURE getNombre(IN ID VARCHAR(15)) BEGIN
+	SELECT nombreA FROM alumnos WHERE cedula = ID;
+END;
+/

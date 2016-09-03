@@ -147,6 +147,7 @@ INSERT INTO Empleado VALUES ("0927852897", "0908070605","Luigi Basantes", "mascu
 INSERT INTO Empleado VALUES ("0927852896", "0102030405", "Luis Cruz", "masculino", "Guayaquil", "1995-04-13", "direccion", "0993977465", "ninguna", "Soltero", "bachiller", "ninguno", 0, "matutino");
 INSERT INTO Empleado VALUES ("0927852895", "1234567890", "Juan Crow", "masculino", "Babahoyo", "1996-02-16", "direccion", "0993977466", "ninguna", "soltero", "bachiller","ninguno",0,"matutino");
 INSERT INTO Empleado VALUES ("0927852894", "0987654321","Joe Saverio", "masculino", "Guayaquil", "1995-08-30", "direccion", "0968388887", "ninguno", "Soltero", "bachiller", "ninguno", 0, "matutino");
+INSERT INTO Empleado VALUES ("0927852898", "0987654100","Juan Pueblo", "MASCULINO", "Babahoyo", "1990-08-30", "General Barona y Roldos", "0968388882", "NO", "Soltero", "Tercer Nivel", "Licenciado en Ciencias de la Educacion", 4, "Completa");
 
 
 #DATOS ALUMNOS
@@ -209,10 +210,13 @@ INSERT Cuenta VALUES ("JoeSaverio","1234567890",null,"0927852894");
 INSERT Cuenta VALUES ("JuanCrow","1234567891",null,"0927852895");
 INSERT Cuenta VALUES ("LuisCruz","1234567892",null,"0927852896");
 INSERT Cuenta VALUES ("LuigiBasantes","1234567893",null,"0927852897");
+INSERT Cuenta VALUES ("JuanPueblo","1234567889",null,"0927852898");
+
 
 
 #DATOS CARGO
 INSERT INTO Cargo VALUES("ADMN001","Rector");
+INSERT INTO Cargo VALUES("ADMN002","Vicerrector");
 INSERT INTO Cargo VALUES ("PROF001","Profesor de fisica");
 INSERT INTO Cargo VAlUES("PROF002","Profesor de Matematica");
 INSERT INTO Cargo VAlUES("PROF003","Profesor de Literatura");
@@ -227,6 +231,7 @@ INSERT INTO Cargo VAlUES("PROF010","Profesor de Desarrollo del pensamiento");
 #DATOS DE DEPARTAMENTO
 INSERT INTO Departamento VALUES ("DEP001", "Docencia", "Departamento de Docencia");
 INSERT INTO Departamento VALUES("DEP002","Rectorado","Departamento de Rectorado");
+INSERT INTO Departamento VALUES("DEP003","Vicerrectorado","Departamento de Vicerrectorado");
 
 #DATOS DE CONTRATO
 INSERT INTO Contrato VALUES("0927852894","DEP001","PROF003",curdate(),"2018-10-12","CKM2023","DEFINITIVO","Docente de Tercer Nivel",1200);
@@ -234,7 +239,7 @@ INSERT INTO Contrato VALUES("0927852896","DEP001","PROF004",curdate(),"2018-10-1
 INSERT INTO Contrato values("0927852897","DEP001","PROF001",curdate(),"2020-12-12","ABC6666","DEFINITIVO","Docente de Segundo Nivel",800);
 INSERT INTO Contrato VALUES("0927852895","DEP002","ADMN001",curdate(),"2016-10-12","CKM2040","DEFINITIVO","Administrativo de Cuarto Nivel",5000);
 INSERT INTO Contrato VALUES("0927852895","DEP001","PROF002",curdate(),"2018-10-12","CKM2041","DEFINITIVO","Docente de Cuarto Nivel",1800);
-
+INSERT INTO Contrato values("0927852897","DEP003","ADMN002",curdate(),"2020-12-12","ABC6645","DEFINITIVO","Administrativo de Tercer Nivel",5000);
 
 #DATOS DE CURSO
 INSERT Curso VALUES("2016CUR001","SEGUNDO EGB","A","ACTIVO","2016-2017",32,"0927852897");
@@ -358,11 +363,18 @@ INSERT pensum VALUES("2016CUR029","2016QUMC02","2016-2017");
 INSERT pensum VALUES("2016CUR029","2016DESP01","2016-2017");
 INSERT pensum VALUES("2016CUR029","2016FRAN01","2016-2017");
 
+INSERT pensum VALUES("2015CUR001","2016LENG01","2016-2017");
+INSERT pensum VALUES("2015CUR001","2016SOCI01","2016-2017");
+
+
 #DATOS DE ASIGNACION
 INSERT Asignacion VALUES("2016LITR01","2016CUR029","0927852894","2016-2017");
 INSERT Asignacion VALUES("2016SOCI02","2016CUR029","0927852896","2016-2017");
 INSERT Asignacion VALUES("2016FISC02","2016CUR029","0927852897","2016-2017");
 INSERT Asignacion VALUES("2016MATE02","2016CUR029","0927852895","2016-2017");
+
+INSERT Asignacion VALUES("2016LENG01","2015CUR001","0927852898","2016-2017");
+INSERT Asignacion VALUES("2016SOCI01","2015CUR001","0927852896","2016-2017");
 
 #DATOS DE NOTAS
 INSERT Libreta VALUES("0987654323","2016FISC02","0927852897",10,8,0,9,null);
@@ -374,7 +386,7 @@ INSERT Libreta VALUES("0987654327","2016FISC02","0927852897",5,6,0,5.5,null);
 INSERT Libreta VALUES("0987654328","2016FISC02","0927852897",6,10,0,8,null);
 /*QUERYS GENERALES*/
 Select * FROM Cuenta;
-SELECT* FROM Empleado;
+SELECT * FROM Empleado;
 SELECT * FROM Matricula;
 SELECT * FROM telefonoestudiante;
 SELECT * FROM Curso;
@@ -413,3 +425,9 @@ Alter table Matricula drop foreign key matricula_ibfk_2;
 Alter table Matricula add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
 Alter table telefonoestudiante drop foreign key telefonoestudiante_ibfk_1;
 Alter table telefonoestudiante add FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade;
+
+SELECT m.ID_Materia, m.nombreM, e.NombreCompleto FROM curso c JOIN pensum p JOIN materia m JOIN Asignacion a JOIN empleado e ON m.ID_Materia = p.ID_Materia AND c.ID_Curso = p.ID_curso AND a.ID_Materia = m.ID_Materia AND e.ID_Empleado=a.ID_Empleado;
+SELECT * FROM matricula;
+SELECT * FROM Alumnos;
+SELECT * FROM curso;
+SELECT * FROM pensum;

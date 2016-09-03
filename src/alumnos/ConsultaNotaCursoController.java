@@ -62,7 +62,7 @@ public class ConsultaNotaCursoController implements Initializable {
         tableNotas.getItems().clear();
         String nomCurso = (String) cBoxCurso.getValue();
         try{
-            Conexion.procedure = Conexion.connection.prepareCall("call getParalelos('" + nomCurso + "')");
+            Conexion.procedure = Conexion.connection.prepareCall("call getParalelos('" + nomCurso + "','" + PeriodoLectivo.periodo + "')");
             Conexion.result = Conexion.procedure.executeQuery();
             while (Conexion.result.next())
                 cBoxParalelo.getItems().add(Conexion.result.getString("paralelo"));
@@ -86,7 +86,7 @@ public class ConsultaNotaCursoController implements Initializable {
         estado.setCellValueFactory(new PropertyValueFactory<>("estado"));
         
         try{
-            Conexion.procedure = Conexion.connection.prepareCall("{call getCursos()};");
+            Conexion.procedure = Conexion.connection.prepareCall("{call getCursos('" + PeriodoLectivo.periodo + "')};");
             Conexion.result = Conexion.procedure.executeQuery();
             while (Conexion.result.next()){
                 cBoxCurso.getItems().add(Conexion.result.getString("nombreC"));

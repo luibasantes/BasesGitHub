@@ -10,8 +10,8 @@ package alumnos;
  * @author Luigi
  */
 public class Usuario {
-    private String username,password,Id;
-    private int tipo;
+    public static String username,password,Id;
+    public static int tipo;
 
     public Usuario() {
         this.Id = null;

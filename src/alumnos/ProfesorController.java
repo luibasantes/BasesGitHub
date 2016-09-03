@@ -7,7 +7,11 @@ package alumnos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,7 +91,12 @@ public class ProfesorController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            // TODO
+            Conexion.connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/BD_Colegio", "root", "mialagata23");
+        } catch (SQLException ex) {
+            Logger.getLogger(AdministradorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
 }

@@ -23,7 +23,13 @@ public class Curso {
         this.dirigente = dirigente;
         this.capacidad=capacidad;
     }
-
+    
+    public Curso(String nombreCurso,String paralelo,String periodo){
+        this.nombreCurso=nombreCurso;
+        this.paralelo=paralelo;
+        this.periodo=periodo;
+    }
+    
     public String getCapacidad() {
         return capacidad;
     }
