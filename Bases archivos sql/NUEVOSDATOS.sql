@@ -439,3 +439,6 @@ SELECT * FROM Alumnos;
 SELECT * FROM curso;
 SELECT * FROM pensum;
 select descripcion from Departamento;
+
+INSERT INTO telefonoestudiante VALUES("11111111","0987654323");
+INSERT INTO telefonoestudiante VALUES("22222222","0987654323");

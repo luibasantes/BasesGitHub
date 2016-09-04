@@ -86,8 +86,7 @@ ELSE
 END IF;
 END;|
 
-call buscarAlumnos("Ana Paredes","1","2016-2017")|
-
+DELIMITER |
 CREATE PROCEDURE mostrarTelefonoAlumno(IN cedula varchar(15))
 BEGIN
 	Select telefono from telefonoestudiante where telefonoestudiante.cedula=cedula;
