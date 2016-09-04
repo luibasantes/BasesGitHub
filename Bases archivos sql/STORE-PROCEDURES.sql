@@ -420,3 +420,9 @@ Update departamento set departamento.nombreD = nom where departamento.ID_Departa
 Update departamento set departamento.descripcion = descrip where departamento.ID_Departamento=id;
 END;
 /
+
+DELIMITER /
+CREATE procedure eliminarDepartamento(In id varchar(15)) BEGIN
+DELETE FROM departamento where departamento.ID_Departamento=id;
+END;
+/

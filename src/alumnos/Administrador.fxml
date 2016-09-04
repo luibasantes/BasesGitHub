@@ -88,6 +88,7 @@
                                 <items>
                                   <MenuItem fx:id="menuDepartamento" mnemonicParsing="false" onAction="#mostrarCrearDepartamento" text="Crear Departamento" />
                                     <MenuItem mnemonicParsing="false" onAction="#mostrarModificarDepartamento" text="Modificar Departamento" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarEliminarDepartamento" text="Eliminar Departamento" />
                                 </items>
                               </Menu>
                            </items>
