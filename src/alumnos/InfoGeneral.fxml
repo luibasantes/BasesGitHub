@@ -44,7 +44,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="660.0" layoutY="468.0" mnemonicParsing="false" onAction="#cerrar" prefHeight="22.0" prefWidth="113.0" text="Aceptar" />
       <Label layoutX="22.0" layoutY="218.0" text="       " />
    </children>
 </AnchorPane>

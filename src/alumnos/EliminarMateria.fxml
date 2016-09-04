@@ -9,7 +9,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.EliminarMateriaController">
    <children>
-      <Label layoutX="557.0" layoutY="14.0" text="Eliminar Materia">
+      <Label layoutX="396.0" layoutY="14.0" text="Eliminar Materia">
          <font>
             <Font name="Arabic Typesetting" size="42.0" />
          </font>
@@ -20,7 +20,6 @@
          </font>
       </Label>
       <TextField fx:id="nombreF" layoutX="320.0" layoutY="228.0" prefHeight="25.0" prefWidth="593.0" />
-      <Button layoutX="603.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
       <Label layoutX="105.0" layoutY="172.0" text="Codigo Materia: ">
          <font>
             <Font size="19.0" />
@@ -32,7 +31,7 @@
          </font>
       </Label>
       <TextField fx:id="codigoF" layoutX="320.0" layoutY="172.0" prefHeight="25.0" prefWidth="593.0" />
-      <Button layoutX="345.0" layoutY="553.0" mnemonicParsing="false" onAction="#eliminarMateria" prefHeight="25.0" prefWidth="181.0" text="Eliminar Materia" />
+      <Button layoutX="398.0" layoutY="538.0" mnemonicParsing="false" onAction="#eliminarMateria" prefHeight="25.0" prefWidth="181.0" text="Eliminar Materia" />
       <ComboBox fx:id="materiasBox" layoutX="320.0" layoutY="106.0" onAction="#mostrarCursosAsignados" prefHeight="25.0" prefWidth="432.0" />
       <TableView fx:id="tablaCursos" layoutX="54.0" layoutY="321.0" prefHeight="200.0" prefWidth="922.0">
          <columns>

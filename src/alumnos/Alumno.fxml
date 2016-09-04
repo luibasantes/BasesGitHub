@@ -73,7 +73,7 @@
             <Pane fx:id="loaderPane" />
          </children>
       </VBox>
-      <ImageView fitHeight="117.0" fitWidth="1491.0" layoutX="-6.0" opacity="0.68" pickOnBounds="true">
+      <ImageView fitHeight="117.0" fitWidth="1491.0" layoutX="-3.0" opacity="0.68" pickOnBounds="true">
          <image>
             <Image url="@../750px-Bandera_de_Los_Ríos.svg.png" />
          </image>

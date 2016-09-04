@@ -23,8 +23,7 @@
       <RadioButton layoutX="844.0" layoutY="109.0" mnemonicParsing="false" text="Por Nombres" />
       <RadioButton layoutX="990.0" layoutY="108.0" mnemonicParsing="false" text="Por Id" />
       <RadioButton layoutX="1131.0" layoutY="108.0" mnemonicParsing="false" text="Por cedula" />
-      <Button layoutX="505.0" layoutY="164.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Buscar " />
-      <Button layoutX="678.0" layoutY="164.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
+      <Button layoutX="628.0" layoutY="174.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Buscar " />
       <Label layoutX="105.0" layoutY="265.0" text="Nombre:">
          <font>
             <Font size="19.0" />

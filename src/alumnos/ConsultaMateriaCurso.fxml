@@ -21,8 +21,7 @@
                   <Font name="Bell MT" size="26.0" />
                </font>
             </Label>
-            <Button fx:id="btnMostrar" layoutX="482.0" layoutY="133.0" mnemonicParsing="false" onAction="#mostrarMateria" prefHeight="22.0" prefWidth="166.0" text="Mostrar" />
-            <Button layoutX="698.0" layoutY="133.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="152.0" text="Cancelar" />
+            <Button fx:id="btnMostrar" layoutX="684.0" layoutY="143.0" mnemonicParsing="false" onAction="#mostrarMateria" prefHeight="22.0" prefWidth="166.0" text="Mostrar" />
             <ComboBox fx:id="cBoxCursos" layoutX="317.0" layoutY="57.0" prefHeight="34.0" prefWidth="514.0" />
          </children>
       </AnchorPane>

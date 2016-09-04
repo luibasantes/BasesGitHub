@@ -145,7 +145,7 @@
             </GridPane>
             <Label layoutX="45.0" layoutY="103.0" text="Busqueda:" />
             <TextField fx:id="txtBusqueda" layoutX="200.0" layoutY="99.0" prefHeight="25.0" prefWidth="761.0" />
-            <RadioButton fx:id="rbtnNombres" layoutX="1012.0" layoutY="99.0" mnemonicParsing="false" text="Por nombres" />
+            <RadioButton fx:id="rbtnNombres" layoutX="1012.0" layoutY="99.0" mnemonicParsing="false" selected="true" text="Por nombres" />
             <RadioButton fx:id="rbtnCedula" layoutX="1170.0" layoutY="98.0" mnemonicParsing="false" text="Por cedula" />
             <RadioButton fx:id="rbtnMatricula" layoutX="1294.0" layoutY="99.0" mnemonicParsing="false" text="Por matricula" />
             <Button fx:id="btnBuscar" layoutX="774.0" layoutY="143.0" mnemonicParsing="false" onAction="#buscarAlumno" prefHeight="25.0" prefWidth="196.0" text="Buscar" />

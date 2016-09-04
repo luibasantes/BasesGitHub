@@ -74,7 +74,6 @@
             <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Button layoutX="668.0" layoutY="471.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Aceptar" />
       <GridPane layoutX="771.0" layoutY="71.0" prefHeight="379.0" prefWidth="663.0">
          <children>
             <Label text="Nivel de Estudios: ">
