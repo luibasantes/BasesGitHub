@@ -379,8 +379,25 @@ CREATE PROCEDURE getCuentas() BEGIN
 	Select * from Cuenta;
 END;
 /
+
 DELIMITER /
 CREATE PROCEDURE getCargo(In id Varchar(15)) BEGIN
 		SELECT con.Cargo from Empleado e,Contrato con where con.Empleado=e.ID_Empleado and con.Empleado=id;
+END;
+/
+
+DELIMITER /
+CREATE PROCEDURE verificarDepartamento(IN id VARCHAR(6)) BEGIN
+	IF id IN (SELECT ID_Departamento FROM Departamento) THEN
+		SELECT 0;
+	ELSE
+		SELECT 1;
+	END IF;
+END;
+/
+
+DELIMITER /
+CREATE PROCEDURE guardarDepartamento(IN id VARCHAR(6), IN nombre VARCHAR(20), IN descripcion VARCHAR(40)) BEGIN
+	INSERT INTO departamento VALUES(id, nombre, descripcion);
 END;
 /
