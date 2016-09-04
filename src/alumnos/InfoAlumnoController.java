@@ -88,8 +88,7 @@ public class InfoAlumnoController implements Initializable {
                 lviewCursoReg.getItems().add(Conexion.result.getString("nombreC")+"-"+Conexion.result.getString("paralelo"));
                 lviewEstadoMat.getItems().add(Conexion.result.getString("estado"));
                 lviewInstitucion.getItems().add(Conexion.result.getString("institucion_Anterior"));
-                Conexion.procedure=Conexion.connection.prepareCall("{call mostrarTelefonoAlumno(?)}");
-                Conexion.procedure.setString(1,cedula);
+                Conexion.procedure=Conexion.connection.prepareCall("{call mostrarTelefonoAlumno('" + cedula + "')}");
                 Conexion.result=Conexion.procedure.executeQuery();
                 String telefonos="";
                 while(Conexion.result.next()){

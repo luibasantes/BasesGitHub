@@ -9,7 +9,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.AgregarCursoController">
    <children>
-      <Label layoutX="557.0" layoutY="14.0" text="Creacion de Curso">
+      <Label layoutX="336.0" layoutY="22.0" text="Creacion de Curso">
          <font>
             <Font name="Arabic Typesetting" size="42.0" />
          </font>
@@ -20,7 +20,6 @@
          </font>
       </Label>
       <TextField fx:id="codeF" layoutX="320.0" layoutY="105.0" prefHeight="25.0" prefWidth="593.0" promptText="Ej:  001 " />
-      <Button layoutX="603.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Cancelar" />
       <Label layoutX="105.0" layoutY="172.0" text="Nombre Curso:">
          <font>
             <Font size="19.0" />
@@ -32,7 +31,7 @@
          </font>
       </Label>
       <TextField fx:id="nameF" layoutX="320.0" layoutY="172.0" prefHeight="25.0" prefWidth="593.0" promptText="Ej: NOVENO EGB" />
-      <Button layoutX="345.0" layoutY="553.0" mnemonicParsing="false" onAction="#generarCursos" prefHeight="25.0" prefWidth="181.0" text="Generar Cursos" />
+      <Button layoutX="478.0" layoutY="553.0" mnemonicParsing="false" onAction="#generarCursos" prefHeight="25.0" prefWidth="181.0" text="Generar Cursos" />
       <ComboBox fx:id="parBox" layoutX="324.0" layoutY="277.0" onAction="#enableButton" prefHeight="25.0" prefWidth="181.0" />
       <TableView fx:id="tablaCursos" layoutX="10.0" layoutY="321.0" prefHeight="200.0" prefWidth="919.0">
          <columns>

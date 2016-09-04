@@ -209,7 +209,6 @@ BEGIN
 END;|
 #libreta.ID_Empleado=(Select a.ID_Empleado FROM Libreta l JOIN Materia m JOIN Asignacion a ON l.ID_Materia=m.ID_Materia AND a.ID_Materia=m.ID_Materia WHERE a.ID_Materia=idMateria AND a.ID_Curso=(Select Curso.ID_Curso FROM Curso where Curso.nombreC=curso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo) )
 
-DROP PROCEDURE modificarNotas|
 CREATE PROCEDURE modificarNotas(
 IN matricula VARCHAR(10),
 IN idMateria VARCHAR(10),
@@ -272,7 +271,6 @@ END;
 /
 
 DELIMITER /
-DROP PROCEDURE mostrarNotasCurso/
 CREATE PROCEDURE mostrarNotasCurso(IN nomCurso VARCHAR(50), IN paralelo CHAR, IN nomMateria VARCHAR(30),IN periodo VARCHAR(10)) BEGIN
 	SELECT ma.NO_Matricula, a.nombreA, l.nota1, l.nota2, l.promedio, l.notaSup, ma.estado, m.ID_Materia, m.nombreM FROM curso c JOIN pensum p JOIN materia m JOIN libreta l JOIN matricula ma JOIN alumnos a ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND m.ID_Materia = l.ID_materia AND l.cedula = ma.cedula AND ma.cedula = a.cedula AND c.nombreC = nomCurso AND c.paralelo = paralelo AND m.nombreM = nomMateria where c.periodoLectivo=periodo AND m.ID_Materia LIKE concat(substring(periodo,1,4),"%");
 END;
