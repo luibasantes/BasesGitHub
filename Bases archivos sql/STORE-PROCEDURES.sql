@@ -365,3 +365,10 @@ CREATE PROCEDURE getNombreDepartamento(IN id VARCHAR(15)) BEGIN
 	SELECT d.descripcion FROM departamento d WHERE d.ID_Departamento = (SELECT Departamento FROM contrato WHERE empleado = id);
 END;
 /
+DELIMITER /
+DROP PROCEDURE getInfoAlumnos/
+CREATE PROCEDURE getInfoAlumnos(In id Varchar(15)) BEGIN
+	SELECT m.NO_Matricula,a.cedula,a.nombreA,a.fecha_Nacimiento,a.direccion,telf.telefono,a.discapacidad,a.genero,a.nombre_Padre,a.nombre_Madre,a.nombre_Representante,a.telefono_Representante,c.nombreC,m.estado,a.institucion_Anterior
+    from alumnos a, matricula m,telefonoestudiante telf,curso c where a.cedula=id and m.cedula=a.cedula and telf.cedula=a.cedula and m.ID_Curso= c.ID_Curso;
+END;
+/
