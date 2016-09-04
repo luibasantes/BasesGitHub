@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.CrearDepartamentoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.ModificarDepartamentoController">
    <children>
       <Label layoutX="457.0" layoutY="216.0" text="Descripcion:">
          <font>
@@ -25,13 +25,13 @@
             <Font name="Arabic Typesetting" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="txtID" layoutX="597.0" layoutY="119.0" prefHeight="37.0" prefWidth="413.0" />
-      <Button fx:id="btnIngresar" layoutX="595.0" layoutY="270.0" mnemonicParsing="false" onAction="#IngresarDepartamento" prefHeight="25.0" prefWidth="164.0" text="Ingresar" />
-      <Label layoutX="527.0" layoutY="37.0" prefHeight="50.0" prefWidth="663.0" text="Crear Departamento" textAlignment="CENTER">
+      <Button fx:id="btnIngresar" layoutX="595.0" layoutY="270.0" mnemonicParsing="false" onAction="#ModificarDepartamento" prefHeight="25.0" prefWidth="164.0" text="Modificar" />
+      <Label layoutX="527.0" layoutY="37.0" prefHeight="50.0" prefWidth="663.0" text="Modificar Departamento" textAlignment="CENTER">
          <font>
             <Font name="Arabic Typesetting" size="42.0" />
          </font>
       </Label>
       <TextField fx:id="txtDesc" layoutX="595.0" layoutY="214.0" prefHeight="37.0" prefWidth="413.0" />
+      <ComboBox fx:id="cBoxID" layoutX="596.0" layoutY="114.0" onAction="#actualizarComboBox" prefHeight="37.0" prefWidth="413.0" />
    </children>
 </AnchorPane>

@@ -168,7 +168,11 @@ public class AdministradorController implements Initializable {
         loaderPane.getChildren().clear();
         loaderPane.getChildren().add(FXMLLoader.load(getClass().getResource("CrearDepartamento.fxml")));
     }
-    
+    @FXML
+    public void mostrarModificarDepartamento(ActionEvent event) throws IOException{
+        loaderPane.getChildren().clear();
+        loaderPane.getChildren().add(FXMLLoader.load(getClass().getResource("ModificarDepartamento.fxml")));
+    }
     @FXML
     private void logout(ActionEvent event){
         System.exit(0);

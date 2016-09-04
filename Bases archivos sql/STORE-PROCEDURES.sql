@@ -401,3 +401,22 @@ CREATE PROCEDURE guardarDepartamento(IN id VARCHAR(6), IN nombre VARCHAR(20), IN
 	INSERT INTO departamento VALUES(id, nombre, descripcion);
 END;
 /
+
+DELIMITER /
+CREATE procedure getDepartamentosID() BEGIN
+select ID_Departamento from Departamento ;
+END;
+/
+
+DELIMITER /
+CREATE procedure getDepartamentosInfo(In id varchar(15)) BEGIN
+select nombreD,descripcion from departamento where departamento.ID_Departamento=id;
+END;
+/
+
+DELIMITER /
+CREATE procedure modificarDepartamento(In id varchar(15),IN nom varchar(50),IN descrip varchar(50)) BEGIN
+Update departamento set departamento.nombreD = nom where departamento.ID_Departamento=id;
+Update departamento set departamento.descripcion = descrip where departamento.ID_Departamento=id;
+END;
+/
