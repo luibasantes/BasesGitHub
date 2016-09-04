@@ -39,6 +39,14 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws SQLException, IOException {
+        String user = "root";
+        String pass = "mialagata23";
+        try{
+            //Esta clase sirve para generar la conexion en SQL
+            Conexion.connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/BD_Colegio", user, pass);
+        }catch(SQLException ex){
+            Logger.getLogger(AdministradorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         final BorderPane pane=new BorderPane();
         GridPane grid = new GridPane();
@@ -88,45 +96,37 @@ public class Main extends Application {
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
         @Override 
         public void handle(ActionEvent e){
-            Connection myConn = null;
-            Statement myStmt = null;
-            ResultSet myRs = null;
-
-            String user = "root";
-            String pass = "mialagata23";
+            
 
             try {
-                //Esta clase sirve para generar la conexion en SQL
-                myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BD_Colegio", user, pass);
-                               
-                myStmt = myConn.createStatement();
-                //Esta clase almacena los datos de los querys, funciona parecido a un scanner
-                myRs = myStmt.executeQuery("select * from Cuenta");
+                
+                Conexion.procedure=Conexion.connection.prepareCall("{Call getCuentas()}");
+                Conexion.result=Conexion.procedure.executeQuery();
 
 
-                while (myRs.next()) {
-                    String userName=myRs.getString("Usuario").toUpperCase();
+                while (Conexion.result.next()) {
+                    String userName=Conexion.result.getString(1).toUpperCase();
                     if(userName!=null){
                         userName = userName.replaceAll(" ","");
                     }
-                    String passWord=myRs.getString("clave");
-                    String cedula=myRs.getString("cedula");
-                    String ID_E=myRs.getString("ID_Empleado");
+                    String passWord=Conexion.result.getString(2);
+                    String cedula=Conexion.result.getString(3);
+                    String ID_E=Conexion.result.getString(4);
                     if(nameInput.getText().toUpperCase().equals(userName)){
                         if(passInput.getText().equals(passWord)){
                             usuario.setUsername(userName);
                             usuario.setPassword(passWord);
                             if(cedula!=null){
+                                //Tipo0 Alumno
                                 usuario.setTipo(0);
                                 usuario.setId(cedula);
                             }else{
                                 usuario.setId(ID_E);
-                                ResultSet myRs1 = null;
-                                myRs1=myStmt.executeQuery("select con.Cargo from Empleado e,Contrato con where "
-                                        + "con.Empleado=e.ID_Empleado and con.Empleado="+usuario.getId());
+                                Conexion.procedure=Conexion.connection.prepareCall("{Call getCargo('"+Usuario.Id+"')}");
+                                Conexion.result=Conexion.procedure.executeQuery();
                                 LinkedList <String> s=new LinkedList<>();
-                                while (myRs1.next()){
-                                    s.addLast(myRs1.getString("Cargo"));
+                                while (Conexion.result.next()){
+                                    s.addLast(Conexion.result.getString(1));
                                 }
                                 int contador=0;
                                 for(String A:s){
@@ -141,7 +141,6 @@ public class Main extends Application {
                                     //Tipo2 ADMINISTRADOR
                                     usuario.setTipo(2);
                                 }
-                                myRs1.close();
                             }
                         }else{
                             lbl.setText("ERROR");
@@ -150,36 +149,9 @@ public class Main extends Application {
                         break;
                     }
                 }
-                myRs.close();
             } catch (Exception exc) {
                 exc.printStackTrace();
-            } 
-            finally {
-                if (myRs != null) {
-                    try {
-                        myRs.close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-                if (myStmt != null) {
-                    try {
-                        myStmt.close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-                if (myConn != null) {
-                    try {
-                        myConn.close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
             }
-            
                 if(usuario.getTipo()==2){
                     Parent root;
                     try {

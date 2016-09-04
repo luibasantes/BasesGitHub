@@ -62,12 +62,6 @@ public class AlumnoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            // TODO
-            Conexion.connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/BD_Colegio", "root", "mialagata23");
-        } catch (SQLException ex) {
-            Logger.getLogger(AdministradorController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }    
     
 }
