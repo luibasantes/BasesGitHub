@@ -232,6 +232,179 @@ BEGIN
 	Select telefono from telefonoempleado WHERE telefonoempleado.ID_Empleado=id;
 END;|
 
+
+CREATE PROCEDURE verificarID(IN id varchar(10),IN cedula VARCHAR(10))
+BEGIN
+	IF id NOT IN (Select Empleado.ID_Empleado FROM Empleado) THEN
+		IF cedula NOT IN (Select Empleado.CIPasaporte FROM Empleado) THEN
+			Select 0;
+		END IF;
+    ELSE
+		Select 1;
+	END IF;
+END;|
+
+
+CREATE PROCEDURE ingresarEmpleado(
+IN id VARCHAR(10),
+IN cedula VARCHAR(10),
+IN nombre VARCHAR(50),
+IN lugar VARCHAR(50),
+IN fecha DATE,
+IN genero VARCHAR(12),
+IN direccion VARCHAR(50),
+IN discapacidad VARCHAR(2),
+IN estado VARCHAR(12),
+IN nivel VARCHAR(30),
+IN titulo VARCHAR(50),
+IN age VARCHAR(2),
+IN jornada VARCHAR(12),
+IN usuario VARCHAR(50))
+BEGIN
+	IF nombre NOT IN (Select NombreCompleto FROM Empleado) THEN
+		INSERT INTO Empleado VALUES(id,cedula,nombre,genero,lugar,fecha,direccion,discapacidad,estado,nivel,titulo,age,jornada);
+		INSERT INTO Cuenta VALUES(usuario,cedula,null,id);
+	ELSE
+		INSERT INTO Empleado VALUES(id,cedula,nombre,genero,lugar,fecha,direccion,discapacidad,estado,nivel,titulo,age,jornada);
+		INSERT INTO Cuenta VALUES(substring(usuario,"1"),cedula,null,id);
+    END IF;
+END;|
+
+
+CREATE PROCEDURE ingresarTelefonoEmpleado(IN id VARCHAR(10),IN telefono VARCHAR(12))
+	BEGIN
+    INSERT INTO telefonoempleado VALUES (telefono,id);
+	END;|
+
+
+CREATE PROCEDURE busquedaEmpleado(IN dato varchar(50),IN tipoBusqueda int)
+BEGIN
+IF tipoBusqueda=1 THEN
+	Select * from Empleado where Empleado.NombreCompleto=dato;
+ELSE 
+	IF tipoBusqueda=2 THEN
+	Select * from Empleado where Empleado.ID_Empleado=dato;
+    ELSE 
+		IF tipoBusqueda=3 THEN
+		Select * from Empleado where Empleado.CIPasaporte=dato;
+        END IF;
+	END IF;
+END IF;
+END;|
+
+DROP PROCEDURE modificarEmpleado|
+CREATE PROCEDURE modificarEmpleado(
+IN cedula VARCHAR(10),
+IN nombre VARCHAR(50),
+IN lugar VARCHAR(50),
+IN fecha DATE,
+IN genero VARCHAR(12),
+IN direccion VARCHAR(50),
+IN discapacidad VARCHAR(2),
+IN estado VARCHAR(12),
+IN nivel VARCHAR(30),
+IN titulo VARCHAR(50),
+IN age VARCHAR(2),
+IN jornada VARCHAR(12),
+IN usuario VARCHAR(50),
+IN id	VARCHAR(10))
+BEGIN
+DELETE FROM telefonoempleado WHERE telefonoempleado.ID_Empleado=id;
+UPDATE Empleado SET Empleado.CIPasaporte=cedula,Empleado.NombreCompleto=nombre,Empleado.lugar_Nacimiento=lugar,Empleado.fecha_Nacimiento=fecha,
+Empleado.genero=genero,Empleado.direccion=direccion,Empleado.discapacidad=discapacidad,Empleado.estado_Civil=estado,Empleado.nivel_EStudios=nivel,
+Empleado.titulo=titulo,Empleado.años_servicio=age,Empleado.jornada=jornada WHERE Empleado.ID_Empleado=id;
+UPDATE Cuenta SET Cuenta.Usuario=usuario,Cuenta.clave=cedula WHERE Cuenta.ID_Empleado=id;
+END;|
+
+
+CREATE PROCEDURE verificarNombramiento(IN nombramiento VARCHAR(15))
+BEGIN
+	IF nombramiento IN (Select Contrato.codigoNombramiento FROM Contrato) THEN
+		select 1;
+	ELSE
+		select 0;
+    END IF;
+END;|
+
+DROP PROCEDURE asignarNombramiento|
+CREATE PROCEDURE asignarNombramiento(
+IN id VARCHAR(10),
+IN nombreDepartamento VARCHAR(50),
+IN nombreCargo VARCHAR(50),
+IN fechaInicio VARCHAR(30),
+IN fechaFin VARCHAR(30),
+IN codigoNombramiento VARCHAR(15),
+IN tipoNombramiento VARCHAR(11),
+IN categoria VARCHAR(50),
+IN sueldo FLOAT,
+IN tipoCargo INT
+)
+BEGIN
+DECLARE codigoCargo VARCHAR(10);
+DECLARE codigoDepartamento VARCHAR(7);
+IF tipoCargo=1 THEN
+	IF nombreCargo NOT IN (Select Cargo.descripcion FROM Cargo) THEN	
+		INSERT INTO Cargo VALUES(concat("PROF","0",(select * FROM ultimocargo)+1),nombreCargo);
+	END IF;
+    SET codigoCargo=(Select Cargo.ID_Cargo FROM Cargo WHERE Cargo.descripcion=nombreCargo);
+    SET codigoDepartamento=(Select Departamento.ID_Departamento FROM Departamento WHERE Departamento.nombreD=nombreDepartamento);
+    INSERT INTO Contrato VALUES(id,codigoDepartamento,codigoCargo,str_to_date(fechainicio,'%Y/%m/%d'),str_to_date(fechaFin,'%Y/%m/%d'),codigoNombramiento,tipoNombramiento,categoria,sueldo);
+END IF;
+IF tipoCargo=2 THEN
+	IF nombreCargo NOT IN (Select Cargo.descripcion FROM Cargo) THEN	
+        INSERT INTO Cargo VALUES(concat("ADMN","0",(select * FROM ultimocargo)+1),nombreCargo);
+	END IF;
+    SET codigoCargo=(Select Cargo.ID_Cargo FROM Cargo WHERE Cargo.descripcion=nombreCargo);
+    SET codigoDepartamento=(Select Departamento.ID_Departamento FROM Departamento WHERE Departamento.nombreD=nombreDepartamento);
+    INSERT INTO Contrato VALUES(id,codigoDepartamento,codigoCargo,str_to_date(fechainicio,'%Y/%m/%d'),str_to_date(fechaFin,'%Y/%m/%d'),codigoNombramiento,tipoNombramiento,categoria,sueldo);
+END IF;
+END;|
+
+CREATE PROCEDURE insertarAsignacion(IN id VARCHAR(10),IN curso VARCHAR(50),IN paralelo VARCHAR(1),IN materia VARCHAR(50),IN periodo VARCHAR(10))
+BEGIN
+	DECLARE codigoMateria VARCHAR(10);
+    DECLARE codigoCurso VARCHAR(10);
+    SET codigoMateria=(Select Materia.ID_Materia FROM Materia WHERE Materia.nombreM=materia AND Materia.ID_Materia LIKE concat(substr(periodo,1,4),"%"));
+	SET codigoCurso=(Select Curso.ID_Curso FROM Curso WHERE Curso.nombreC=curso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo);
+    INSERT INTO Asignacion VALUES(codigoMateria,codigoCurso,id,periodo);
+END;|
+
+
+CREATE PROCEDURE mostrarProfesoresDisponibles()
+BEGIN
+	Select e.NombreCompleto FROM Empleado e WHERE e.ID_Empleado IN (Select  Contrato.Empleado FROM Contrato  WHERE Contrato.Departamento="DEP001" AND curdate()>=Contrato.fechaI AND curdate()<Contrato.fechaF);
+END|
+
+call mostrarProfesoresDisponibles|
+
+
+CREATE PROCEDURE esDirigente(IN dirigente VARCHAR(50))
+BEGIN
+	IF dirigente IN (Select e.NombreCompleto FROM Empleado e JOIN Curso c ON e.ID_Empleado=c.ID_Empleado) THEN
+		Select 1;
+	ELSE
+		Select 0;
+	END IF;
+END;|
+
+
+CREATE PROCEDURE asignarDirigente(IN dirigente VARCHAR(50),IN curso VARCHAR(50),IN paralelo VARCHAR(1),IN periodo VARCHAR(12))
+BEGIN
+	UPDATE Curso SET Curso.ID_Empleado=(Select Empleado.ID_Empleado FROM Empleado Where Empleado.NombreCompleto=dirigente) WHERE Curso.nombreC=curso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo;
+END;|
+
+
+CREATE PROCEDURE proof(IN dato DATE)
+BEGIN
+IF dato > "2016-09-10" THEN
+	select 1;
+ELSE
+	select 0;
+END IF;
+END|
+
+call proof(curdate())|
+
 #---------PROCEDURES DE JOE-----------------------------------------------------------------------------------------
 DELIMITER /
 CREATE PROCEDURE buscarAlumno(IN dato varchar(50), IN tipoBusqueda CHAR) BEGIN
@@ -333,8 +506,9 @@ END;
 
 
 DELIMITER /
+DROP PROCEDURE getDepartamentos/
 CREATE procedure getDepartamentos() BEGIN
-select descripcion from Departamento ;
+select nombreD,descripcion from Departamento ;
 END;
 /
 
@@ -367,7 +541,6 @@ END;
 /
 
 DELIMITER /
-DROP PROCEDURE getInfoAlumnos/
 CREATE PROCEDURE getInfoAlumnos(In id Varchar(15)) BEGIN
 	SELECT m.NO_Matricula,a.cedula,a.nombreA,a.fecha_Nacimiento,a.direccion,telf.telefono,a.discapacidad,a.genero,a.nombre_Padre,a.nombre_Madre,a.nombre_Representante,a.telefono_Representante,c.nombreC,m.estado,a.institucion_Anterior
     from alumnos a, matricula m,telefonoestudiante telf,curso c where a.cedula=id and m.cedula=a.cedula and telf.cedula=a.cedula and m.ID_Curso= c.ID_Curso;
@@ -404,7 +577,7 @@ END;
 
 DELIMITER /
 CREATE procedure getDepartamentosID() BEGIN
-select ID_Departamento from Departamento ;
+select ID_Departamento,nombreD from Departamento ;
 END;
 /
 

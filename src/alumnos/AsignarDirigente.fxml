@@ -29,7 +29,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button fx:id="asignarButton" layoutX="309.0" layoutY="431.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Asignar Dirigente" />
+      <Button fx:id="asignarButton" layoutX="309.0" layoutY="431.0" mnemonicParsing="false" onAction="#asignarDirigente" prefHeight="25.0" prefWidth="181.0" text="Asignar Dirigente" />
       <ComboBox fx:id="cursoBox" layoutX="309.0" layoutY="106.0" onAction="#mostrarDirigente" prefHeight="25.0" prefWidth="450.0" />
       <ComboBox fx:id="profesorBox" layoutX="309.0" layoutY="290.0" prefHeight="25.0" prefWidth="450.0" />
    </children>

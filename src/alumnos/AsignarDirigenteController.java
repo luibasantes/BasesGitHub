@@ -13,8 +13,10 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -66,7 +68,37 @@ public class AsignarDirigenteController implements Initializable {
             dirLabel.setText("Dirigente: "+Conexion.result.getString(1));
         else
             dirLabel.setText("Dirigente: Ninguno");
+        Conexion.procedure=Conexion.connection.prepareCall("{call mostrarProfesoresDisponibles()}");
+        Conexion.result=Conexion.procedure.executeQuery();
+        while(Conexion.result.next()){
+            profesorBox.getItems().add(Conexion.result.getString(1));
+        }
         
+    }
+    
+    public void asignarDirigente(ActionEvent e) throws SQLException{
+        String dirigente=(String) profesorBox.getValue();
+        String[] curso=((String) cursoBox.getValue()).split(",");
+        Conexion.procedure=Conexion.connection.prepareCall("{call esDirigente('"+dirigente+"')}");
+        Conexion.result=Conexion.procedure.executeQuery();
+        Conexion.result.next();
+        if(Conexion.result.getInt(1)==0){
+            Conexion.procedure=Conexion.connection.prepareCall("{call asignarDirigente('"+dirigente+"','"+curso[0]+"','"+curso[1]+"','"+PeriodoLectivo.periodo+"')}");
+            Conexion.procedure.execute();
+            Alert suceed=new Alert(Alert.AlertType.CONFIRMATION);
+            suceed.setTitle("EXITO!");
+            suceed.setHeaderText("El curso fue asginado correctamene al profesor seleccionado");
+            suceed.initStyle(StageStyle.UTILITY);
+            suceed.showAndWait();
+        }
+        else{
+            Alert error=new Alert(Alert.AlertType.ERROR);
+            error.setTitle("Error de ingreso");
+            error.setHeaderText("CURSO NO ASIGNABLE");
+            error.setContentText("El curso no se puede asignar a una persona con un curso a cargo");
+            error.initStyle(StageStyle.UTILITY);
+            error.showAndWait();
+        }
     }
     
 }

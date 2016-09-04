@@ -130,7 +130,7 @@ public class Main extends Application {
                                 }
                                 int contador=0;
                                 for(String A:s){
-                                    if(A.startsWith("ADMN")){
+                                    if(A.equals("ADMN001") || A.equals("ADMN002")){
                                         contador++;
                                     }
                                 }

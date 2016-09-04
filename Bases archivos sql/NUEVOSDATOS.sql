@@ -10,11 +10,10 @@ create table Empleado(
     lugar_Nacimiento varchar(40),
     fecha_Nacimiento date,
     direccion varchar(50),
-    telefono varchar(10),
     discapacidad varchar(30),
     estado_Civil varchar(25),
     nivel_EStudios varchar(40),
-    titulo varchar(40),
+    titulo varchar(70),
     años_servicio int,
     jornada varchar(30)
 );
@@ -38,7 +37,7 @@ create table Contrato(
     fechaF date,
     codigoNombramiento varchar(10) PRIMARY KEY,
     tipoNombramiento varchar(30),
-    categoria varchar(30),
+    categoria varchar(60),
     sueldo double,
     FOREIGN KEY (Empleado) REFERENCES Empleado (ID_Empleado) ON  UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (Departamento) REFERENCES Departamento (ID_Departamento),
@@ -83,7 +82,6 @@ create table Libreta(
     nota2 float,
     notaSup float,
     promedio float,
-    examen_Recuperacion float,
     FOREIGN KEY (cedula) REFERENCES Alumnos (cedula) on delete cascade on update cascade,
     FOREIGN KEY (ID_Materia) REFERENCES Materia (ID_Materia),
     FOREIGN KEY (ID_Empleado ) REFERENCES Empleado (ID_Empleado ) on delete cascade on update cascade
@@ -143,11 +141,11 @@ create table Pensum(
 );
 
 #DATOS EMPLEADOS
-INSERT INTO Empleado VALUES ("0927852897", "0908070605","Luigi Basantes", "masculino", "Guayaquil", "1993-10-08", "direccion", "0968388887", "ninguna", "soltero", "bachiller","ninguno",0,"matutino");
-INSERT INTO Empleado VALUES ("0927852896", "0102030405", "Luis Cruz", "masculino", "Guayaquil", "1995-04-13", "direccion", "0993977465", "ninguna", "Soltero", "bachiller", "ninguno", 0, "matutino");
-INSERT INTO Empleado VALUES ("0927852895", "1234567890", "Juan Crow", "masculino", "Babahoyo", "1996-02-16", "direccion", "0993977466", "ninguna", "soltero", "bachiller","ninguno",0,"matutino");
-INSERT INTO Empleado VALUES ("0927852894", "0987654321","Joe Saverio", "masculino", "Guayaquil", "1995-08-30", "direccion", "0968388887", "ninguno", "Soltero", "bachiller", "ninguno", 0, "matutino");
-INSERT INTO Empleado VALUES ("0927852898", "0987654100","Juan Pueblo", "MASCULINO", "Babahoyo", "1990-08-30", "General Barona y Roldos", "0968388882", "NO", "Soltero", "Tercer Nivel", "Licenciado en Ciencias de la Educacion", 4, "Completa");
+INSERT INTO Empleado VALUES ("0927852897", "0908070605","Luigi Basantes", "masculino", "Guayaquil", "1993-10-08", "direccion", "ninguna", "soltero", "bachiller","ninguno",0,"matutino");
+INSERT INTO Empleado VALUES ("0927852896", "0102030405", "Luis Cruz", "masculino", "Guayaquil", "1995-04-13", "direccion", "ninguna", "Soltero", "bachiller", "ninguno", 0, "matutino");
+INSERT INTO Empleado VALUES ("0927852895", "1234567890", "Juan Crow", "masculino", "Babahoyo", "1996-02-16", "direccion", "ninguna", "soltero", "bachiller","ninguno",0,"matutino");
+INSERT INTO Empleado VALUES ("0927852894", "0987654321","Joe Saverio", "masculino", "Guayaquil", "1995-08-30", "direccion", "ninguno", "Soltero", "bachiller", "ninguno", 0, "matutino");
+INSERT INTO Empleado VALUES ("0927852898", "0987654100","Juan Pueblo", "MASCULINO", "Babahoyo", "1990-08-30", "General Barona y Roldos", "NO", "Soltero", "Tercer Nivel", "Licenciado en Ciencias de la Educacion", 4, "Completa");
 
 
 #DATOS ALUMNOS
@@ -247,7 +245,7 @@ INSERT Curso VALUES("2016CUR002","SEGUNDO EGB","B","ACTIVO","2016-2017",32,null)
 INSERT Curso VALUES("2016CUR003","SEGUNDO EGB","C","ACTIVO","2016-2017",32,null);
 INSERT Curso VALUES("2016CUR004","TERCERO EGB","A","ACTIVO","2016-2017",32,null);
 INSERT Curso VALUES("2016CUR005","TERCERO EGB","B","ACTIVO","2016-2017",32,null);
-INSERT Curso VALUES("2016CUR006","TERCB","C","ACTIVO","2016-2017",32,null);
+INSERT Curso VALUES("2016CUR006","TERCERO EGB","C","ACTIVO","2016-2017",32,null);
 INSERT Curso VALUES("2016CUR007","CUARTO EGB","A","ACTIVO","2016-2017",32,null);
 INSERT Curso VALUES("2016CUR008","CUARTO EGB","B","ACTIVO","2016-2017",32,null);
 INSERT Curso VALUES("2016CUR009","CUARTO EGB","C","ACTIVO","2016-2017",32,null);
@@ -377,17 +375,27 @@ INSERT Asignacion VALUES("2016LENG01","2015CUR001","0927852898","2016-2017");
 INSERT Asignacion VALUES("2016SOCI01","2015CUR001","0927852896","2016-2017");
 
 #DATOS DE NOTAS
-INSERT Libreta VALUES("0987654323","2016FISC02","0927852897",10,8,0,9,null);
-INSERT Libreta VALUES("0987654323","2016SOCI02","0927852896",9,7,0,8,null);
-INSERT Libreta VALUES("0987654323","2016LITR01","0927852894",8,9,0,8.5,null);
-INSERT Libreta VALUES("0987654323","2016MATE02","0927852895",7,5,7,7,null);
-INSERT Libreta VALUES("0987654324","2016FISC02","0927852897",7,5,0,6,null);
-INSERT Libreta VALUES("0987654327","2016FISC02","0927852897",5,6,0,5.5,null);
-INSERT Libreta VALUES("0987654328","2016FISC02","0927852897",6,10,0,8,null);
+INSERT Libreta VALUES("0987654323","2016FISC02","0927852897",10,8,0,9);
+INSERT Libreta VALUES("0987654323","2016SOCI02","0927852896",9,7,0,8);
+INSERT Libreta VALUES("0987654323","2016LITR01","0927852894",8,9,0,8.5);
+INSERT Libreta VALUES("0987654323","2016MATE02","0927852895",7,5,7,7);
+INSERT Libreta VALUES("0987654324","2016FISC02","0927852897",7,5,0,6);
+INSERT Libreta VALUES("0987654327","2016FISC02","0927852897",5,6,0,5.5);
+INSERT Libreta VALUES("0987654328","2016FISC02","0927852897",6,10,0,8);
 
 #DATOS DE TELEFONOS DE EMPLEADOS
 INSERT telefonoempleado VALUES("0981488883","0927852895");
 INSERT telefonoempleado VALUES("052731855","0927852895");
+
+#DATOS DE TELEFONOS DE ESTUDIANTES
+INSERT INTO telefonoestudiante VALUES("11111111","0987654323");
+INSERT INTO telefonoestudiante VALUES("22222222","0987654323");
+
+
+#VISTAS
+CREATE VIEW ultimoCargo AS
+(Select CAST((Select substring(max(Cargo.ID_Cargo),-3)) AS UNSIGNED) FROM Cargo);
+
 
 
 /*QUERYS GENERALES*/
@@ -440,5 +448,3 @@ SELECT * FROM curso;
 SELECT * FROM pensum;
 select descripcion from Departamento;
 
-INSERT INTO telefonoestudiante VALUES("11111111","0987654323");
-INSERT INTO telefonoestudiante VALUES("22222222","0987654323");
