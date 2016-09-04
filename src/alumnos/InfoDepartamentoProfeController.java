@@ -24,8 +24,6 @@ import javafx.scene.layout.VBox;
  */
 public class InfoDepartamentoProfeController implements Initializable {
     @FXML
-    private Button mostrar;
-    @FXML
     private TextField txtDepartamento;
     @FXML
     private TableView<Empleado> tablaT;

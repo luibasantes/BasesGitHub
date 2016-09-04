@@ -340,8 +340,31 @@ CREATE procedure getDepartamentos() BEGIN
 select descripcion from Departamento ;
 END;
 /
+
 DELIMITER /
 CREATE procedure getInfoDepartamentos(In descripcionD VARCHAR(50)) BEGIN
 SELECT empleado.ID_Empleado,empleado.NombreCompleto,cargo.descripcion FROM empleado,cargo,departamento,contrato where empleado.ID_Empleado=contrato.Empleado and cargo.ID_Cargo=contrato.Cargo and departamento.ID_Departamento=contrato.Departamento and Departamento.descripcion=descripcionD;
+END;
+/
+
+DELIMITER /
+CREATE PROCEDURE buscarEmpleado(IN dato VARCHAR(30), IN tipoBusqueda CHAR) BEGIN
+	IF tipoBusqueda=1 THEN
+		SELECT e.*, c.descripcion, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND ID_Empleado = dato GROUP BY ID_Empleado;
+	ELSE 
+		IF tipoBusqueda=2 THEN
+		SELECT e.*, c.descripcion, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND e.CIPasaporte = dato GROUP BY ID_Empleado;
+		ELSE 
+			IF tipoBusqueda=3 THEN
+			SELECT e.*, c.descripcion, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND e.NombreCompleto = dato GROUP BY ID_Empleado;
+			END IF;
+		END IF;
+	END IF;
+END;
+/
+
+DELIMITER /
+CREATE PROCEDURE getNombreDepartamento(IN id VARCHAR(15)) BEGIN
+	SELECT d.descripcion FROM departamento d WHERE d.ID_Departamento = (SELECT Departamento FROM contrato WHERE empleado = id);
 END;
 /
