@@ -86,7 +86,7 @@
                               </Menu>
                               <Menu mnemonicParsing="false" text="Departamentos">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" text="Crear Departamento" />
+                                  <MenuItem fx:id="menuDepartamento" mnemonicParsing="false" text="Crear Departamento" />
                                 </items>
                               </Menu>
                            </items>

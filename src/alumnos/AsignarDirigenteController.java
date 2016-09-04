@@ -60,7 +60,7 @@ public class AsignarDirigenteController implements Initializable {
     
     public void mostrarDirigente(ActionEvent e) throws SQLException{
         String cursoArray[]=((String) cursoBox.getValue()).split(",");
-        Conexion.procedure=Conexion.connection.prepareCall("{'"+cursoArray[0]+"','" +cursoArray[1]+"','" + PeriodoLectivo.periodo+"'}");
+        Conexion.procedure=Conexion.connection.prepareCall("{call mostrarDirigente('"+cursoArray[0]+"','" +cursoArray[1]+"','" + PeriodoLectivo.periodo+"')}");
         Conexion.result=Conexion.procedure.executeQuery();
         if(Conexion.result.next())
             dirLabel.setText("Dirigente: "+Conexion.result.getString(1));
