@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.CambioEstadoMatriculaController">
+<AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.CambioEstadoMatriculaController">
    <children>
       <Label layoutX="504.0" layoutY="18.0" prefHeight="50.0" prefWidth="673.0" text="Cambio de Estado de Matricula" textAlignment="CENTER" underline="true">
          <font>
@@ -21,7 +21,10 @@
          </font>
       </Label>
       <TextField fx:id="busquedaF" layoutX="309.0" layoutY="151.0" prefHeight="25.0" prefWidth="562.0" />
-      <Label layoutX="136.0" layoutY="152.0" prefHeight="19.0" prefWidth="83.0" text="Busqueda:" />
+      <Label layoutX="214.0" layoutY="145.0" prefHeight="35.0" prefWidth="89.0" text="Busqueda:">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
       <RadioButton fx:id="nameRadio" layoutX="936.0" layoutY="156.0" mnemonicParsing="false" text="Por nombres" />
       <RadioButton fx:id="idRadio" layoutX="1088.0" layoutY="154.0" mnemonicParsing="false" text="Por Cedula" />
       <RadioButton fx:id="matRadio" layoutX="1190.0" layoutY="154.0" mnemonicParsing="false" text="Por matricula" />
@@ -37,7 +40,7 @@
          </font>
       </Label>
       <Button fx:id="cambiarButton" layoutX="703.0" layoutY="594.0" mnemonicParsing="false" onAction="#cambiarEstadoMatricula" prefHeight="25.0" prefWidth="163.0" text="Cambiar" />
-      <Label layoutX="128.0" layoutY="518.0" prefHeight="35.0" prefWidth="233.0" text="Seleccione el estado:">
+      <Label layoutX="226.0" layoutY="516.0" prefHeight="35.0" prefWidth="210.0" text="Seleccione el estado:">
          <font>
             <Font size="21.0" />
          </font>

@@ -9,26 +9,26 @@
 
 <VBox fx:id="consultaNotaPeriodoBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.ConsultaNotaPeriodoController">
    <children>
-      <AnchorPane>
+      <AnchorPane prefHeight="122.0" prefWidth="1350.0">
          <children>
-            <Label layoutX="64.0" layoutY="68.0" text="Busqueda:" />
-            <TextField fx:id="txtBusqueda" layoutX="189.0" layoutY="64.0" prefHeight="22.0" prefWidth="585.0" />
-            <Label layoutX="514.0" layoutY="-1.0" text="Consulta de nota por periodo">
+            <Label layoutX="175.0" layoutY="69.0" text="Busqueda:" />
+            <TextField fx:id="txtBusqueda" layoutX="300.0" layoutY="65.0" prefHeight="22.0" prefWidth="585.0" />
+            <Label layoutX="625.0" text="Consulta de nota por periodo">
                <font>
                   <Font name="Bell MT" size="26.0" />
                </font>
             </Label>
-            <RadioButton fx:id="rbtnNombres" layoutX="813.0" layoutY="68.0" mnemonicParsing="false" text="Por Nombres" />
-            <RadioButton fx:id="rbtnCedula" layoutX="954.0" layoutY="68.0" mnemonicParsing="false" text="Por cédula" />
-            <RadioButton fx:id="rbtnMatricula" layoutX="1062.0" layoutY="68.0" mnemonicParsing="false" text="Por matricula" />
-            <Button fx:id="btnBuscar" layoutX="616.0" layoutY="96.0" mnemonicParsing="false" onAction="#mostrarNotas" prefHeight="22.0" prefWidth="166.0" text="Buscar" />
-            <Label layoutX="64.0" layoutY="100.0" text="Periodo Lectivo: " />
-            <ComboBox fx:id="cBoxPeriodos" layoutX="189.0" layoutY="96.0" prefWidth="150.0" />
+            <RadioButton fx:id="rbtnNombres" layoutX="924.0" layoutY="69.0" mnemonicParsing="false" text="Por Nombres" />
+            <RadioButton fx:id="rbtnCedula" layoutX="1065.0" layoutY="69.0" mnemonicParsing="false" text="Por cédula" />
+            <RadioButton fx:id="rbtnMatricula" layoutX="1173.0" layoutY="69.0" mnemonicParsing="false" text="Por matricula" />
+            <Button fx:id="btnBuscar" layoutX="727.0" layoutY="97.0" mnemonicParsing="false" onAction="#mostrarNotas" prefHeight="22.0" prefWidth="166.0" text="Buscar" />
+            <Label layoutX="175.0" layoutY="101.0" text="Periodo Lectivo: " />
+            <ComboBox fx:id="cBoxPeriodos" layoutX="300.0" layoutY="97.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="308.0" prefWidth="1228.0">
+      <AnchorPane prefHeight="308.0" prefWidth="1450.0">
          <children>
-            <TableView fx:id="tableNotas" layoutX="35.0" layoutY="6.0" prefHeight="302.0" prefWidth="1239.0">
+            <TableView fx:id="tableNotas" layoutX="140.0" layoutY="3.0" prefHeight="302.0" prefWidth="1239.0">
                <columns>
                   <TableColumn fx:id="codMateria" prefWidth="119.0" text="Codigo Materia" />
                   <TableColumn fx:id="nomMateria" minWidth="0.0" prefWidth="393.0" text="Nombre Materia" />
