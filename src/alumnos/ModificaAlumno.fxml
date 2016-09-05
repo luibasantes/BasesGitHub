@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1453.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.ModificaAlumnoController">
    <children>
       <RadioButton fx:id="matRadio" layoutX="1143.0" layoutY="79.0" mnemonicParsing="false" text="Por matrícula" />
@@ -22,7 +21,6 @@
          </font>
       </Label>
       <ComboBox fx:id="cursoBox" layoutX="310.0" layoutY="523.0" prefHeight="25.0" prefWidth="630.0" />
-      <Button layoutX="858.0" layoutY="596.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="152.0" text="Cancelar" />
       <GridPane layoutX="780.0" layoutY="107.0" prefHeight="379.0" prefWidth="663.0">
          <children>
             <Label text="Nombre del Padre:">
@@ -68,7 +66,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Button fx:id="modifyButton" layoutX="602.0" layoutY="597.0" mnemonicParsing="false" onAction="#modificarAlumno" prefHeight="25.0" prefWidth="164.0" text="Modificar" />
+      <Button fx:id="modifyButton" layoutX="776.0" layoutY="600.0" mnemonicParsing="false" onAction="#modificarAlumno" prefHeight="25.0" prefWidth="164.0" text="Modificar" />
       <GridPane layoutX="23.0" layoutY="107.0" prefHeight="379.0" prefWidth="693.0">
          <children>
             <Label layoutX="27.0" layoutY="73.0" prefHeight="26.0" prefWidth="221.0" text="Matricula:" GridPane.rowIndex="1">

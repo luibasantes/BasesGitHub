@@ -55,7 +55,25 @@ INSERT INTO BD_Colegio.Alumnos VALUES (cedula,nombre,lugar,fecha,institucion,pad
 SET id_curso=(Select Curso.ID_Curso from Curso where nombreC=curso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo);
 INSERT INTO BD_Colegio.Matricula VALUES (matricula,id_curso,cedula,periodo,"ACTIVO");
 INSERT INTO BD_Colegio.Cuenta VALUES(usuario,cedula,cedula,null);
+END;|
 
+
+CREATE PROCEDURE obtenerMateriasAsignaciones(IN curso VARCHAR(50), IN paralelo VARCHAR(1),IN periodo VARCHAR(10))
+BEGIN
+	DECLARE idCurso VARCHAR(10);
+	SET idCurso=(Select idCurso FROM Curso WHERE Curso.nombreC=curso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo);
+	Select Asignacion.ID_Materia FROM Asignacion WHERE Asignacion.ID_Curso=idCurso AND asignacion.periodoLetivo=periodo;
+END;|
+
+CREATE PROCEDURE crearLibreta(IN cedula VARCHAR(10), IN idMateria VARCHAR(10),periodo VARCHAR(10))
+BEGIN
+	DECLARE idCurso Varchar(10);
+    DECLARE idEmpleado Varchar(10);
+    SET idCurso=(Select c.ID_Curso FROM Curso c JOIN Matricula m ON c.ID_Curso=m.ID_Curso WHERE m.cedula=cedula AND m.periodo_Electivo=periodo);
+    IF idCurso IN (Select Asignacion.ID_Curso FROM Asignacion WHERE Asignacion.periodoLetivo=periodo) THEN
+		SET idEmpleado=(Select Asignacion.ID_Empleado FROM Asignacion WHERE Asignacion.ID_Curso=idCurso AND Asignacion.ID_Materia=idMateria AND Asignacion.periodoLetivo=periodo);
+		INSERT INTO Libreta VALUES(cedula,idMateria,idEmpleado,0,0,0,0);
+	END IF;
 END;|
 
 #FALTA CREAR ESTO
@@ -114,6 +132,7 @@ IN periodo VARCHAR(10))
 BEGIN
 UPDATE BD_Colegio.Alumnos SET Alumnos.cedula=cedula,alumnos.nombreA=nombre,alumnos.lugar_Nacimiento=lugar,alumnos.fecha_Nacimiento=fecha,alumnos.institucion_Anterior=institucion,nombre_Padre=padre,nombre_Madre=madre,nombre_Representante=representante,telefono_Representante=telRepresentante,direccion=Alumnos.direccion,Alumnos.genero=genero,Alumnos.discapacidad=discapacidad where alumnos.cedula=cedulaAnterior;
 DELETE FROM BD_Colegio.telefonoestudiante where telefonoestudiante.cedula=cedula;
+DELETE FROM BD_Colegio.libreta WHERE libreta.cedula=cedula;
 UPDATE BD_Colegio.Matricula SET Matricula.ID_Curso=(Select Curso.ID_Curso from Curso where Curso.nombreC=curso AND Curso.paralelo=paralelo AND Curso.periodoLectivo=periodo) where Matricula.cedula=cedula AND Matricula.periodo_Electivo=periodo;
 UPDATE BD_Colegio.Cuenta SET Cuenta.Usuario=usuario, clave=cedula,Cuenta.cedula=cedula where Cuenta.cedula=cedula;
 END;|
@@ -373,9 +392,6 @@ BEGIN
 	Select e.NombreCompleto FROM Empleado e WHERE e.ID_Empleado IN (Select  Contrato.Empleado FROM Contrato  WHERE Contrato.Departamento="DEP001" AND curdate()>=Contrato.fechaI AND curdate()<Contrato.fechaF);
 END|
 
-call mostrarProfesoresDisponibles|
-
-
 CREATE PROCEDURE esDirigente(IN dirigente VARCHAR(50))
 BEGIN
 	IF dirigente IN (Select e.NombreCompleto FROM Empleado e JOIN Curso c ON e.ID_Empleado=c.ID_Empleado) THEN
@@ -400,8 +416,6 @@ ELSE
 	select 0;
 END IF;
 END|
-
-call proof(curdate())|
 
 #---------PROCEDURES DE JOE-----------------------------------------------------------------------------------------
 DELIMITER /
@@ -466,7 +480,7 @@ END;
 
 DELIMITER /
 CREATE PROCEDURE getMaterias(IN nomCurso VARCHAR(25), IN periodo VARCHAR(10)) BEGIN
-	SELECT m.nombreM FROM Curso c JOIN Materia m JOIN pensum p ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND c.nombreC = nomCurso AND c.periodoLectivo = periodo;
+	SELECT distinct m.nombreM,m.ID_Materia FROM Curso c JOIN Materia m JOIN pensum p ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND c.nombreC = nomCurso AND c.periodoLectivo = periodo;
 END;
 /
 

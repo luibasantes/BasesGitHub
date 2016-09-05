@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="1454.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.IngresoAlumnosController">
    <children>
       <Label layoutX="31.0" layoutY="523.0" text="Seleccione el curso:">
@@ -16,7 +15,6 @@
          </font>
       </Label>
       <ComboBox fx:id="cursoBox" layoutX="311.0" layoutY="525.0" prefHeight="25.0" prefWidth="692.0" />
-      <Button layoutX="858.0" layoutY="596.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="152.0" text="Cancelar" />
       <GridPane layoutX="780.0" layoutY="107.0" prefHeight="379.0" prefWidth="663.0">
          <children>
             <Label text="Nombre del Padre:">
@@ -62,7 +60,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Button layoutX="602.0" layoutY="597.0" mnemonicParsing="false" onAction="#ingresarAlumno" prefHeight="25.0" prefWidth="164.0" text="Ingresar" />
+      <Button layoutX="839.0" layoutY="597.0" mnemonicParsing="false" onAction="#ingresarAlumno" prefHeight="25.0" prefWidth="164.0" text="Ingresar" />
       <GridPane layoutX="23.0" layoutY="107.0" prefHeight="379.0" prefWidth="693.0">
          <children>
             <Label layoutX="27.0" layoutY="73.0" prefHeight="26.0" prefWidth="221.0" text="Matricula:" GridPane.rowIndex="1">
@@ -135,134 +133,5 @@
             <Font name="Arabic Typesetting" size="42.0" />
          </font>
       </Label>
-      <AnchorPane id="InfoUsuarioPanel" layoutX="10.0" layoutY="10.0" prefHeight="629.0" prefWidth="1434.0">
-         <children>
-            <Label layoutX="569.0" layoutY="21.0" prefHeight="50.0" prefWidth="663.0" text="Ingreso de Alumnos al Sistema" textAlignment="CENTER" AnchorPane.bottomAnchor="558.0" AnchorPane.leftAnchor="569.0" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="21.0">
-               <font>
-                  <Font name="Arabic Typesetting" size="42.0" />
-               </font>
-            </Label>
-            <GridPane layoutX="13.0" layoutY="97.0" prefHeight="379.0" prefWidth="693.0">
-               <children>
-                  <Label layoutX="27.0" layoutY="73.0" prefHeight="26.0" prefWidth="221.0" text="Matricula:" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Cedula: " GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Nombres:" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Fecha y Lugar Nacimiento:" GridPane.rowIndex="4">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Label>
-                  <Label text="Dirección Domiciliaria: " GridPane.rowIndex="5">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Teléfonos:" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Tipo de discapacidad:" GridPane.rowIndex="7">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Genero:" GridPane.rowIndex="8">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="matriculaF" prefHeight="37.0" prefWidth="413.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="cedulaF" prefHeight="37.0" prefWidth="413.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="nombreF" prefHeight="37.0" prefWidth="413.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField fx:id="fechaF" prefHeight="37.0" prefWidth="413.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField fx:id="direccionF" prefHeight="40.0" prefWidth="413.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField fx:id="telefonosF" prefHeight="36.0" prefWidth="413.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField fx:id="discapacidadF" prefHeight="39.0" prefWidth="413.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <TextField fx:id="generoF" prefHeight="38.0" prefWidth="413.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-               </children>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="395.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="44.0" minHeight="0.0" prefHeight="44.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <Button layoutX="592.0" layoutY="587.0" mnemonicParsing="false" onAction="#ingresarAlumno" prefHeight="25.0" prefWidth="164.0" text="Ingresar" />
-            <GridPane layoutX="770.0" layoutY="97.0" prefHeight="379.0" prefWidth="663.0">
-               <children>
-                  <Label text="Nombre del Padre:">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Nombre de la Madre:" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Nombre Representante:" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Telefono Representante:" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Institucion de la que proviene: " GridPane.rowIndex="4">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="padreF" prefHeight="39.0" prefWidth="382.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="madreF" prefHeight="45.0" prefWidth="382.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="repF" prefHeight="47.0" prefWidth="382.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="repTelF" prefHeight="49.0" prefWidth="382.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField fx:id="institucionF" prefHeight="47.0" prefWidth="382.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-               </children>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="281.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="382.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <Button layoutX="848.0" layoutY="586.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="152.0" text="Cancelar" />
-            <ComboBox fx:id="cursoBox" layoutX="301.0" layoutY="515.0" prefHeight="25.0" prefWidth="692.0" />
-            <Label layoutX="21.0" layoutY="513.0" text="Seleccione el curso:">
-               <font>
-                  <Font name="Arabic Typesetting" size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

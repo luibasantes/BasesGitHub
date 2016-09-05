@@ -99,7 +99,6 @@
                     <menus>
                       <Menu fx:id="menuLogout" mnemonicParsing="false" text="Terminar Sesion">
                            <items>
-                              <MenuItem fx:id="menuCerrarSesion" mnemonicParsing="false" onAction="#logout" text="Cerrar Sesion" />
                               <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#logout" text="Salir" />
                            </items></Menu>
                     </menus>

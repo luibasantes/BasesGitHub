@@ -27,9 +27,8 @@
                   <Font name="Bell MT" size="26.0" />
                </font>
             </Label>
-            <Button layoutX="710.0" layoutY="230.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="152.0" text="Cancelar" />
             <ComboBox fx:id="cursoBox" layoutX="314.0" layoutY="84.0" onAction="#cargarMaterias" prefHeight="34.0" prefWidth="514.0" />
-            <Button layoutX="461.0" layoutY="230.0" mnemonicParsing="false" onAction="#mostrarNotas" prefHeight="22.0" prefWidth="166.0" text="Mostrar" />
+            <Button layoutX="662.0" layoutY="231.0" mnemonicParsing="false" onAction="#mostrarNotas" prefHeight="22.0" prefWidth="166.0" text="Mostrar" />
             <Label layoutX="45.0" layoutY="166.0" text="Seleccione Materia:">
                <font>
                   <Font size="21.0" />

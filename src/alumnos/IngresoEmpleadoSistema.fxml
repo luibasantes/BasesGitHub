@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.IngresoEmpleadoSistemaController">
    <children>
       <Label layoutX="507.0" layoutY="29.0" text="INGRESO DE EMPLEADOS AL SISTEMA">
@@ -15,8 +14,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="769.0" layoutY="477.0" mnemonicParsing="false" text="Cancelar" />
-      <Button fx:id="ingresarButton" layoutX="654.0" layoutY="477.0" mnemonicParsing="false" onAction="#ingresarEmpleado" text="Ingresar" />
+      <Button fx:id="ingresarButton" layoutX="725.0" layoutY="476.0" mnemonicParsing="false" onAction="#ingresarEmpleado" text="Ingresar" />
       <GridPane layoutX="786.0" layoutY="98.0" prefHeight="379.0" prefWidth="663.0">
          <children>
             <Label text="Nivel de Estudios: " GridPane.rowIndex="2">

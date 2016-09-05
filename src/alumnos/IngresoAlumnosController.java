@@ -112,6 +112,15 @@ public class IngresoAlumnosController implements Initializable {
                 Conexion.procedure.setString(2,cedula);
                 Conexion.procedure.execute();
             }
+            Conexion.procedure=Conexion.connection.prepareCall("{call obtenerMateriasAsignaciones(?,?,?)}");
+            Conexion.procedure.setString(1,cursoArray[0]);
+            Conexion.procedure.setString(2,cursoArray[1]);
+            Conexion.procedure.setString(3,PeriodoLectivo.periodo);
+            Conexion.result=Conexion.procedure.executeQuery();
+            while(Conexion.result.next()){
+                Conexion.procedure=Conexion.connection.prepareCall("{call crearLibreta('"+cedula+"','"+Conexion.result.getString(2)+"','"+PeriodoLectivo.periodo+"')}");
+                Conexion.procedure.execute();
+            }
             Alert suceed=new Alert(AlertType.CONFIRMATION);
             suceed.setTitle("EXITO!");
             suceed.setHeaderText("El alumno fue ingresado correctamene a la Base de Datos");

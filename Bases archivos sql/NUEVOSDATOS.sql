@@ -483,5 +483,10 @@ select descripcion from Departamento;
 
 SELECT m.NO_Matricula, a.nombreA, l.nota1, l.nota2, l.notaSup FROM alumnos a, libreta l, matricula m, materia ma WHERE a.cedula = m.cedula AND a.cedula = l.cedula AND ma.ID_Materia = l.ID_Materia AND ma.nombreM = "MATEMATICA BACHILLERATO" AND m.ID_Curso = (SELECT ID_Curso FROM curso WHERE nombreC = "PRIMERO BACHILLERATO" AND paralelo = "A" AND periodoLectivo = "2016-2017");
 
+SELECT  DISTINCT m.nombreM,m.ID_Materia FROM Curso c JOIN Materia m JOIN pensum p ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND c.nombreC ="PRIMERO BACHILLERATO" AND c.periodoLectivo = "2016-2017";
+Select c.ID_Curso FROM Curso c JOIN Matricula m ON c.ID_Curso=m.ID_Curso WHERE m.cedula="1207716810" AND m.periodo_Electivo="2016-2017";
+Select Asignacion.ID_Empleado FROM Asignacion WHERE Asignacion.ID_Curso="2016CUR029" AND Asignacion.ID_Materia="2016FISC02" AND Asignacion.periodoLetivo="2016-2017";
+
 
 DELETE FROM Contrato WHERE Contrato.Empleado="0927852896" AND Contrato.cargo="PROF011";
+DELETE FROM Alumnos WHERE cedula="1207716810";

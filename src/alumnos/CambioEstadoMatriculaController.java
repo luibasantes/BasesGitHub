@@ -18,6 +18,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.StageStyle;
 
 /**
@@ -43,12 +44,18 @@ public class CambioEstadoMatriculaController implements Initializable {
     String name;
     String mat;
     
+    ToggleGroup group;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         statusBox.getItems().add("ACTIVO");
         statusBox.getItems().add("INACTIVO");
+        
+        group = new ToggleGroup();
+        nameRadio.setToggleGroup(group);
+        idRadio.setToggleGroup(group);
+        matRadio.setToggleGroup(group);
     }    
     
     public void buscarAlumno(ActionEvent event) throws SQLException{

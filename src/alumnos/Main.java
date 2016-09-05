@@ -246,7 +246,7 @@ public class Main extends Application {
                     Parent root;
                     try {
                         root = FXMLLoader.load(getClass().getResource("Alumno.fxml"));
-                        root.setStyle("-fx-background-image: url('fondo123.jpg')");
+                        root.setStyle("-fx-background-image: url('cielo.jpg')");
                         Scene scene = new Scene(root);
                         stage.hide();
                         stage.setScene(scene);
