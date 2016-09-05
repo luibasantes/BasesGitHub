@@ -133,13 +133,25 @@ public class Main extends Application {
                                     if(A.equals("ADMN001") || A.equals("ADMN002")){
                                         contador++;
                                     }
+                                    else if (A.equals("ADMN003"))
+                                        contador=2;
+                                    else if(A.startsWith("ADMN"))
+                                        contador=-1;
                                 }
                                 if(contador==0){
                                     //Tipo1 Profesor
                                     usuario.setTipo(1);
-                                }else{
+                                }else if(contador==1){
                                     //Tipo2 ADMINISTRADOR
                                     usuario.setTipo(2);
+                                }
+                                else if(contador==2)
+                                    //TIPO4 Secretaria
+                                    usuario.setTipo(4);
+                                
+                                else{
+                                    //TIPO3 ADMINISTRATIVO
+                                    usuario.setTipo(3);
                                 }
                             }
                         }else{
@@ -170,7 +182,48 @@ public class Main extends Application {
                     } catch (IOException ex) {
                         System.out.println("ERROR");
                     }
-                }else if(usuario.getTipo()==1){
+                }
+                else if(usuario.getTipo()==4){
+                    Parent root;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("Secretaria.fxml"));
+                        root.setStyle("-fx-background-image: url('cielo.jpg')");
+                        Scene scene = new Scene(root);
+                        stage.hide();
+                        stage.setScene(scene);
+                        stage.setMaximized(false);
+                        stage.setResizable(false);
+                        stage.setTitle("Secretaria");
+                        Calendar fecha = Calendar.getInstance();
+                        PeriodoLectivo.periodo=""+fecha.get(Calendar.YEAR)+"-"+(fecha.get(Calendar.YEAR)+1);
+                        PeriodoLectivo.year=""+fecha.get(Calendar.YEAR);
+                        stage.show();
+                    } catch (IOException ex) {
+                        System.out.println("ERROR");
+                    }
+                }
+                
+                else if(usuario.getTipo()==3){
+                    Parent root;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("Administrativo.fxml"));
+                        root.setStyle("-fx-background-image: url('cielo.jpg')");
+                        Scene scene = new Scene(root);
+                        stage.hide();
+                        stage.setScene(scene);
+                        stage.setMaximized(false);
+                        stage.setResizable(false);
+                        stage.setTitle("Administrativo");
+                        Calendar fecha = Calendar.getInstance();
+                        PeriodoLectivo.periodo=""+fecha.get(Calendar.YEAR)+"-"+(fecha.get(Calendar.YEAR)+1);
+                        PeriodoLectivo.year=""+fecha.get(Calendar.YEAR);
+                        stage.show();
+                    } catch (IOException ex) {
+                        System.out.println("ERROR");
+                    }
+                }
+                
+                else if(usuario.getTipo()==1){
                     Parent root;
                     try {
                         root = FXMLLoader.load(getClass().getResource("Profesor.fxml"));

@@ -93,7 +93,7 @@ public class ModificacionEmpleadoController implements Initializable {
             }
         }
         else if(idRadio.isSelected()){
-            Conexion.procedure= Conexion.connection.prepareCall("{call busquedaEmpleados(?,?)}");
+            Conexion.procedure= Conexion.connection.prepareCall("{call busquedaEmpleado(?,?)}");
             Conexion.procedure.setString(1,busquedaF.getText());
             Conexion.procedure.setInt(2, 2);
             Conexion.result=Conexion.procedure.executeQuery();
@@ -132,7 +132,7 @@ public class ModificacionEmpleadoController implements Initializable {
             }
         }
         else if(cedulaRadio.isSelected()){
-            Conexion.procedure= Conexion.connection.prepareCall("{call busquedaEmpleados(?,?)}");
+            Conexion.procedure= Conexion.connection.prepareCall("{call busquedaEmpleado(?,?)}");
             Conexion.procedure.setString(1,busquedaF.getText());
             Conexion.procedure.setInt(2, 3);
             Conexion.result=Conexion.procedure.executeQuery();

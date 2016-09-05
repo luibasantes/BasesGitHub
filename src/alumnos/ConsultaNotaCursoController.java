@@ -48,7 +48,9 @@ public class ConsultaNotaCursoController implements Initializable {
             Conexion.procedure = Conexion.connection.prepareCall("{call mostrarNotasCurso('"+ nomCurso + "','" + paralelo + "','" + nomMateria +"','" + PeriodoLectivo.periodo +"')}");
             Conexion.result = Conexion.procedure.executeQuery();
             while (Conexion.result.next()){
-                Nota n = new Nota("", "", Conexion.result.getString("nota1"), Conexion.result.getString("nota2"), Conexion.result.getString("promedio"), Conexion.result.getString("notaSup"), "", Conexion.result.getString("NO_Matricula"), Conexion.result.getString("nombreA"), Conexion.result.getString("estado"));
+                Nota n = new Nota("", "", Conexion.result.getString("nota1"), Conexion.result.getString("nota2"), "", Conexion.result.getString("notaSup"), "", Conexion.result.getString("NO_Matricula"), Conexion.result.getString("nombreA"), "");
+                n.setProm();
+                n.setEstado();
                 tableNotas.getItems().add(n);
             }
         }catch(Exception e){

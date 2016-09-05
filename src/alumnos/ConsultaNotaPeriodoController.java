@@ -94,6 +94,10 @@ public class ConsultaNotaPeriodoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        rbtnNombres.setToggleGroup(group);
+        rbtnCedula.setToggleGroup(group);
+        rbtnMatricula.setToggleGroup(group);
+        
         codMateria.setCellValueFactory(new PropertyValueFactory<>("idMateria"));
         nomMateria.setCellValueFactory(new PropertyValueFactory<>("nomMateria"));
         firstQui.setCellValueFactory(new PropertyValueFactory<>("fQui"));

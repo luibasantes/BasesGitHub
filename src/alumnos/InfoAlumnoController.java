@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.StageStyle;
 
 /**
@@ -30,6 +31,7 @@ public class InfoAlumnoController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    ToggleGroup grupo;
     
     @FXML
     public Button btnBuscar;
@@ -115,6 +117,10 @@ public class InfoAlumnoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        grupo = new ToggleGroup();
+        rbtnNombres.setToggleGroup(grupo);
+        rbtnCedula.setToggleGroup(grupo);
+        rbtnMatricula.setToggleGroup(grupo);
         // TODO
     }    
     

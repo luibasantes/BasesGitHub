@@ -146,7 +146,7 @@ INSERT INTO Empleado VALUES ("0927852896", "0102030405", "Luis Cruz", "masculino
 INSERT INTO Empleado VALUES ("0927852895", "1234567890", "Juan Crow", "masculino", "Babahoyo", "1996-02-16", "direccion", "ninguna", "soltero", "bachiller","ninguno",0,"matutino");
 INSERT INTO Empleado VALUES ("0927852894", "0987654321","Joe Saverio", "masculino", "Guayaquil", "1995-08-30", "direccion", "ninguno", "Soltero", "bachiller", "ninguno", 0, "matutino");
 INSERT INTO Empleado VALUES ("0927852898", "0987654100","Juan Pueblo", "MASCULINO", "Babahoyo", "1990-08-30", "General Barona y Roldos", "NO", "Soltero", "Tercer Nivel", "Licenciado en Ciencias de la Educacion", 4, "Completa");
-
+INSERT INTO Empleado VALUES ("1202086014", "1202086004","WASHBRUM TORRES ANA MARIA","FEMENINO","GUAYAQUIL","1978-04-12","ROLDOS Y GARCIA MORENO","NO","DIVORCIADO","CUARTO NIVEL","MASTER EN ADMINISTRACION DE EMPRESAS",15,"COMPLETA");
 
 #DATOS ALUMNOS
 INSERT INTO Alumnos VALUES ("0987654321","ricardo Gavino","Babahoyo","1995-02-12","ninguna","Jose Gavino","Estela Garcia","Jose Gavino", "0993467544","direccion","masculino","ninguna");
@@ -161,6 +161,7 @@ INSERT INTO Alumnos VALUES ("0987654329","Carlos Montez","Guayaquil","1995-11-14
 INSERT INTO Alumnos VALUES ("0987654330","Jean Canela","Guayaquil","1995-03-14","ninguna","Ted Canela","Viviana Chavez","Ted Canela","0939661874","direccion","masculino","ninguna");
 INSERT INTO Alumnos VALUES ("0987654331","Nelson Tarantino","Loja","1995-03-21","Catolica","Antonio Tarantino","Nicole Tapia","Antonio Tarantino","0946457479","direccion","masculino","ninguna");
 INSERT INTO Alumnos VALUES ("0987654332","Ricky Martin","Guayaquil","1995-09-24","Saleciana","Enrique Martin","Elvira Moreira","Elvira Moreira","0912982376","direccion","masculino","ninguna");
+
 
 INSERT INTO Alumnos VALUES ("0987654351","Alex Macas","Babahoyo","1995-02-12","ninguna","Jose Gavino","Estela Garcia","Jose Gavino", "0993467544","direccion","masculino","ninguna");
 INSERT INTO Alumnos VALUES ("0987654352","Joe Zambrano","Guayaquil","1995-11-05","ninguna","Miguel Montalvo","Josefa Chamba","Josefa Chamba","0998734234","direccion","femenino","ninguna");
@@ -196,7 +197,6 @@ INSERT INTO Alumnos VALUES ("0987654381","Rubina Rojas","Loja","1995-03-21","Cat
 INSERT INTO Alumnos VALUES ("0987654382","Clara Velazquez","Guayaquil","1995-09-24","Saleciana","Enrique Martin","Elvira Moreira","Elvira Moreira","0912982376","direccion","masculino","ninguna");
 
 
-
 #DATOS CUENTAS
 INSERT Cuenta VALUES ("RicardoGavino","1234567890","0987654321",null);
 INSERT Cuenta VALUES ("GabrielaMontalvo","1234567891","0987654322",null);
@@ -209,12 +209,13 @@ INSERT Cuenta VALUES ("JuanCrow","1234567891",null,"0927852895");
 INSERT Cuenta VALUES ("LuisCruz","1234567892",null,"0927852896");
 INSERT Cuenta VALUES ("LuigiBasantes","1234567893",null,"0927852897");
 INSERT Cuenta VALUES ("JuanPueblo","1234567889",null,"0927852898");
-
+INSERT Cuenta VALUES ("AnaWashbrum","1202086004",null,"1202086014");
 
 
 #DATOS CARGO
 INSERT INTO Cargo VALUES("ADMN001","Rector");
 INSERT INTO Cargo VALUES("ADMN002","Vicerrector");
+INSERT INTO Cargo VALUES("ADMN003","Secretario");
 INSERT INTO Cargo VALUES ("PROF001","Profesor de fisica");
 INSERT INTO Cargo VAlUES("PROF002","Profesor de Matematica");
 INSERT INTO Cargo VAlUES("PROF003","Profesor de Literatura");
@@ -225,11 +226,14 @@ INSERT INTO Cargo VAlUES("PROF007","Profesor de Lenguaje");
 INSERT INTO Cargo VAlUES("PROF008","Profesor de Ingles");
 INSERT INTO Cargo VAlUES("PROF009","Profesor de Mecanica Automotriz");
 INSERT INTO Cargo VAlUES("PROF010","Profesor de Desarrollo del pensamiento");
+INSERT INTO Cargo VALUES("ADMN004","Ayudante de secretaria");
 
 #DATOS DE DEPARTAMENTO
 INSERT INTO Departamento VALUES ("DEP001", "Docencia", "Departamento de Docencia");
 INSERT INTO Departamento VALUES("DEP002","Rectorado","Departamento de Rectorado");
 INSERT INTO Departamento VALUES("DEP003","Vicerrectorado","Departamento de Vicerrectorado");
+INSERT INTO Departamento VALUES("DEP004","Secretaria","Departamento de Secreteria");
+INSERT INTO Departamento VALUES("DEP005","Enfermeria","Departamento de Enfermeria");
 
 #DATOS DE CONTRATO
 INSERT INTO Contrato VALUES("0927852894","DEP001","PROF003",curdate(),"2018-10-12","CKM2023","DEFINITIVO","Docente de Tercer Nivel",1200);
@@ -238,6 +242,8 @@ INSERT INTO Contrato values("0927852897","DEP001","PROF001",curdate(),"2020-12-1
 INSERT INTO Contrato VALUES("0927852895","DEP002","ADMN001",curdate(),"2016-10-12","CKM2040","DEFINITIVO","Administrativo de Cuarto Nivel",5000);
 INSERT INTO Contrato VALUES("0927852895","DEP001","PROF002",curdate(),"2018-10-12","CKM2041","DEFINITIVO","Docente de Cuarto Nivel",1800);
 INSERT INTO Contrato values("0927852897","DEP003","ADMN002",curdate(),"2020-12-12","ABC6645","DEFINITIVO","Administrativo de Tercer Nivel",5000);
+INSERT INTO Contrato VALUES("1202086014","DEP004","ADMN003",curdate(),"2020-10-12","CKB2120","DEFINITIVO","Administrativo de Segundo Nivel",1800);
+INSERT INTO Contrato VALUES("0927852898","DEP004","ADMN004",curdate(),"2016-11-20","CAC2021","PROVISIONAL","Administrativo de Primer Nivel",1000);
 
 #DATOS DE CURSO
 INSERT Curso VALUES("2016CUR001","SEGUNDO EGB","A","ACTIVO","2016-2017",32,"0927852897");
@@ -336,6 +342,7 @@ INSERT matricula VALUES("MAT0040","2016CUR030","0987654380","2016-2017","ACTIVO"
 INSERT matricula VALUES("MAT0041","2016CUR030","0987654381","2016-2017","ACTIVO");
 INSERT matricula VALUES("MAT0042","2016CUR030","0987654382","2016-2017","ACTIVO");
 
+INSERT matricula VALUES("MAT0043","2016CUR001","0987654382","2016-2017","ACTIVO");
 
 #DATOS DE MATERIAS
 INSERT Materia Values("2016INGL01","INGLES BACHILLERATO","ACTIVO");
@@ -361,9 +368,34 @@ INSERT pensum VALUES("2016CUR029","2016QUMC02","2016-2017");
 INSERT pensum VALUES("2016CUR029","2016DESP01","2016-2017");
 INSERT pensum VALUES("2016CUR029","2016FRAN01","2016-2017");
 
-INSERT pensum VALUES("2015CUR001","2016LENG01","2016-2017");
-INSERT pensum VALUES("2015CUR001","2016SOCI01","2016-2017");
+INSERT pensum VALUES("2016CUR030","2016MATE02","2016-2017");
+INSERT pensum VALUES("2016CUR030","2016LITR01","2016-2017");
+INSERT pensum VALUES("2016CUR030","2016FISC02","2016-2017");
+INSERT pensum VALUES("2016CUR030","2016INGL01","2016-2017");
+INSERT pensum VALUES("2016CUR030","2016SCOI02","2016-2017");
+INSERT pensum VALUES("2016CUR030","2016QUMC02","2016-2017");
+INSERT pensum VALUES("2016CUR030","2016DESP01","2016-2017");
+INSERT pensum VALUES("2016CUR030","2016FRAN01","2016-2017");
 
+INSERT pensum VALUES("2016CUR031","2016MATE02","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016LITR01","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016FISC02","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016INGL01","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016SCOI02","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016QUMC02","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016DESP01","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016FRAN01","2016-2017");
+
+INSERT pensum VALUES("2016CUR031","2016FRAN01","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016LENG01","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016SOCI02","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016MATE02","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016QUMC02","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016INGL01","2016-2017");
+INSERT pensum VALUES("2016CUR031","2016FISC02","2016-2017");
+
+SELECT * FROM materia;
+SELECT * FROM CURSO;
 
 #DATOS DE ASIGNACION
 INSERT Asignacion VALUES("2016LITR01","2016CUR029","0927852894","2016-2017");
@@ -403,6 +435,7 @@ Select * FROM Cuenta;
 SELECT * FROM Empleado;
 SELECT * FROM Matricula;
 SELECT * FROM telefonoestudiante;
+SELECT * FROM telefonoempleado;
 SELECT * FROM Curso;
 select * from Empleado;
 SELECT * FROM ALUMNOS;
@@ -448,3 +481,7 @@ SELECT * FROM curso;
 SELECT * FROM pensum;
 select descripcion from Departamento;
 
+SELECT m.NO_Matricula, a.nombreA, l.nota1, l.nota2, l.notaSup FROM alumnos a, libreta l, matricula m, materia ma WHERE a.cedula = m.cedula AND a.cedula = l.cedula AND ma.ID_Materia = l.ID_Materia AND ma.nombreM = "MATEMATICA BACHILLERATO" AND m.ID_Curso = (SELECT ID_Curso FROM curso WHERE nombreC = "PRIMERO BACHILLERATO" AND paralelo = "A" AND periodoLectivo = "2016-2017");
+
+
+DELETE FROM Contrato WHERE Contrato.Empleado="0927852896" AND Contrato.cargo="PROF011";

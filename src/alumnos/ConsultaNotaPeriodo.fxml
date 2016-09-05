@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="consultaNotaPeriodoBox" prefHeight="200.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.ConsultaNotaPeriodoController">
+<VBox fx:id="consultaNotaPeriodoBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.ConsultaNotaPeriodoController">
    <children>
       <AnchorPane>
          <children>
@@ -18,17 +18,17 @@
                   <Font name="Bell MT" size="26.0" />
                </font>
             </Label>
-            <RadioButton fx:id="rbtnNombres" layoutX="907.0" layoutY="68.0" mnemonicParsing="false" text="Por Nombres" />
-            <RadioButton fx:id="rbtnCedula" layoutX="1056.0" layoutY="68.0" mnemonicParsing="false" text="Por cédula" />
-            <RadioButton fx:id="rbtnMatricula" layoutX="1194.0" layoutY="68.0" mnemonicParsing="false" text="Por matricula" />
-            <Button fx:id="btnBuscar" layoutX="608.0" layoutY="117.0" mnemonicParsing="false" onAction="#mostrarNotas" prefHeight="22.0" prefWidth="166.0" text="Buscar" />
+            <RadioButton fx:id="rbtnNombres" layoutX="813.0" layoutY="68.0" mnemonicParsing="false" text="Por Nombres" />
+            <RadioButton fx:id="rbtnCedula" layoutX="954.0" layoutY="68.0" mnemonicParsing="false" text="Por cédula" />
+            <RadioButton fx:id="rbtnMatricula" layoutX="1062.0" layoutY="68.0" mnemonicParsing="false" text="Por matricula" />
+            <Button fx:id="btnBuscar" layoutX="616.0" layoutY="96.0" mnemonicParsing="false" onAction="#mostrarNotas" prefHeight="22.0" prefWidth="166.0" text="Buscar" />
             <Label layoutX="64.0" layoutY="100.0" text="Periodo Lectivo: " />
             <ComboBox fx:id="cBoxPeriodos" layoutX="189.0" layoutY="96.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="331.0" prefWidth="1335.0">
+      <AnchorPane prefHeight="308.0" prefWidth="1228.0">
          <children>
-            <TableView fx:id="tableNotas" layoutY="6.0" prefHeight="325.0" prefWidth="1335.0">
+            <TableView fx:id="tableNotas" layoutX="35.0" layoutY="6.0" prefHeight="302.0" prefWidth="1239.0">
                <columns>
                   <TableColumn fx:id="codMateria" prefWidth="119.0" text="Codigo Materia" />
                   <TableColumn fx:id="nomMateria" minWidth="0.0" prefWidth="393.0" text="Nombre Materia" />

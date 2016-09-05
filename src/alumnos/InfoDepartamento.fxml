@@ -9,29 +9,30 @@
 
 <VBox fx:id="consultaDepartamentoBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.InfoDepartamentoController">
    <children>
-      <AnchorPane prefHeight="169.0" prefWidth="1335.0">
+      <AnchorPane>
          <children>
-            <Label layoutX="65.0" layoutY="63.0" text="Seleccione Departamento:">
+            <Label layoutX="390.0" layoutY="68.0" text="Seleccione Departamento:">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="514.0" layoutY="-1.0" text="Informacion de Departamento">
+            <Label layoutX="788.0" layoutY="14.0" text="Informacion de Departamento">
                <font>
                   <Font name="Bell MT" size="26.0" />
                </font>
             </Label>
-            <Button fx:id="mostrar" layoutX="727.0" layoutY="143.0" mnemonicParsing="false" onAction="#mostrar" prefHeight="22.0" prefWidth="166.0" text="Mostrar" />
-            <ComboBox fx:id="cBoxDep" layoutX="379.0" layoutY="59.0" prefHeight="34.0" prefWidth="514.0" />
+            <Button fx:id="mostrar" layoutX="846.0" layoutY="131.0" mnemonicParsing="false" onAction="#mostrar" prefHeight="22.0" prefWidth="166.0" text="Mostrar" />
+            <ComboBox fx:id="cBoxDep" layoutX="658.0" layoutY="66.0" prefHeight="34.0" prefWidth="514.0" />
+            <Label layoutX="6.0" layoutY="143.0" text="     " />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="331.0" prefWidth="1335.0">
+      <AnchorPane>
          <children>
-            <TableView fx:id="tablaT" layoutX="-2.0" layoutY="26.0" prefHeight="470.0" prefWidth="1445.0">
+            <TableView fx:id="tablaT" layoutX="381.0" layoutY="7.0" prefHeight="481.0" prefWidth="855.0">
                <columns>
-                  <TableColumn fx:id="columIdEmpleado" prefWidth="248.0" text="Id Empleado" />
-                  <TableColumn fx:id="columNombreC" minWidth="0.0" prefWidth="506.0" text="Nombres" />
-                  <TableColumn fx:id="columCargo" prefWidth="690.0" text="Cargo" />
+                  <TableColumn fx:id="columIdEmpleado" prefWidth="148.0" text="Id Empleado" />
+                  <TableColumn fx:id="columNombreC" minWidth="0.0" prefWidth="361.0" text="Nombres" />
+                  <TableColumn fx:id="columCargo" prefWidth="343.0" text="Cargo" />
                </columns>
             </TableView>
          </children>

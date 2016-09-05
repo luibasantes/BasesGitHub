@@ -17,6 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.StageStyle;
 
 /**
@@ -35,13 +36,18 @@ public class InfoEmpleadoController implements Initializable {
     private TextField txtBusqueda;
     @FXML
     private RadioButton rbtnID, rbtnCedula, rbtnNombres;
+    
+    ToggleGroup group;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        group = new ToggleGroup();
+        rbtnID.setToggleGroup(group);
+        rbtnCedula.setToggleGroup(group);
+        rbtnNombres.setToggleGroup(group);
     }    
 
     @FXML
@@ -63,8 +69,9 @@ public class InfoEmpleadoController implements Initializable {
         lviewJornada.getItems().clear();
         
         try{
+            String id;
             if(rbtnID.isSelected()){
-                String id = txtBusqueda.getText().trim();
+                id = txtBusqueda.getText().trim();
                 Conexion.procedure = Conexion.connection.prepareCall("{call buscarEmpleado('" + id + "','" + 1 + "')};");
                 Conexion.result = Conexion.procedure.executeQuery();
             }else if (rbtnCedula.isSelected()){
@@ -77,21 +84,32 @@ public class InfoEmpleadoController implements Initializable {
                 Conexion.result = Conexion.procedure.executeQuery();
             }
             if(Conexion.result.next()){
-                lviewID.getItems().add(Conexion.result.getString(1));
-                lviewNombre.getItems().add(Conexion.result.getString(2));
-                lviewNac.getItems().add(Conexion.result.getString(6));
-                lviewGenero.getItems().add(Conexion.result.getString(4));
-                lviewDir.getItems().add(Conexion.result.getString(7));
-                lviewTelef.getItems().add(Conexion.result.getString(8));
-                lviewDisca.getItems().add(Conexion.result.getString(9));
-                lviewEstadoC.getItems().add(Conexion.result.getString(10));
-                lviewEstudios.getItems().add(Conexion.result.getString(11));
-                lviewTitulo.getItems().add(Conexion.result.getString(12));
-                lviewCargo.getItems().add(Conexion.result.getString(15));
-                lviewTrabaja.getItems().add("" + (Year.now().getValue() - Integer.parseInt(Conexion.result.getString(13))));
-                lviewSueldo.getItems().add(Conexion.result.getString(16));
-                lviewDepartamento.getItems().add(Conexion.result.getString(15));
-                lviewJornada.getItems().add(Conexion.result.getString(14));
+                lviewID.getItems().add(Conexion.result.getString("ID_Empleado"));
+                lviewNombre.getItems().add(Conexion.result.getString("NombreCompleto"));
+                lviewNac.getItems().add(Conexion.result.getString("fecha_Nacimiento"));
+                lviewGenero.getItems().add(Conexion.result.getString("genero"));
+                lviewDir.getItems().add(Conexion.result.getString("direccion"));
+                lviewDisca.getItems().add(Conexion.result.getString("discapacidad"));
+                lviewEstadoC.getItems().add(Conexion.result.getString("estado_Civil"));
+                lviewEstudios.getItems().add(Conexion.result.getString("nivel_Estudios"));
+                lviewTitulo.getItems().add(Conexion.result.getString("titulo"));
+                lviewCargo.getItems().add(Conexion.result.getString("descripcion"));
+                lviewTrabaja.getItems().add("" + (Year.now().getValue() - Integer.parseInt(Conexion.result.getString("años_servicio"))));
+                lviewSueldo.getItems().add(Conexion.result.getString("SUM(con.sueldo)"));
+                lviewDepartamento.getItems().add(Conexion.result.getString("dep"));
+                lviewJornada.getItems().add(Conexion.result.getString("jornada"));
+                id=Conexion.result.getString("ID_Empleado");
+                Conexion.procedure=Conexion.connection.prepareCall("{call mostrarTelefonoEmpleado(?)}");
+                Conexion.procedure.setString(1, id);
+                Conexion.result=Conexion.procedure.executeQuery();
+                String telefonos="";
+                while(Conexion.result.next()){
+                    telefonos+=Conexion.result.getString(1)+",";
+                }
+                if(telefonos.length()>0)
+                    lviewTelef.getItems().add(telefonos.substring(0, telefonos.length()-1));
+                else
+                    lviewTelef.getItems().add("");
             }
             else{
                 Alert error=new Alert(Alert.AlertType.ERROR);

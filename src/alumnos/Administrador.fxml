@@ -33,7 +33,7 @@
                               <Menu mnemonicParsing="false" text="Alumnos">
                                 <items>
                                   <MenuItem mnemonicParsing="false" onAction="#mostrarConsultaNotaPeriodo" text="Consultar notas por periodo" />
-                                    <MenuItem mnemonicParsing="false" onAction="#mostrarInfoAlumno" text="Consulltar informacion personal" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarInfoAlumno" text="Consulltar informacion" />
                                 </items>
                               </Menu>
                               <Menu mnemonicParsing="false" text="Empleados">

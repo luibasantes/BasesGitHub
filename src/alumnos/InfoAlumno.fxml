@@ -7,149 +7,144 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane fx:id="infoAlumnoPane" prefHeight="655.0" prefViewportHeight="526.0" prefViewportWidth="1445.0" prefWidth="1447.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.InfoAlumnoController">
-   <content>
-      <AnchorPane id="InfoUsuarioPanel">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="1441.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.InfoAlumnoController">
+   <children>
+      <Button fx:id="btnBuscar" layoutX="784.0" layoutY="153.0" mnemonicParsing="false" onAction="#buscarAlumno" prefHeight="25.0" prefWidth="196.0" text="Buscar" />
+      <RadioButton fx:id="rbtnMatricula" layoutX="1304.0" layoutY="109.0" mnemonicParsing="false" text="Por matricula" />
+      <RadioButton fx:id="rbtnCedula" layoutX="1180.0" layoutY="108.0" mnemonicParsing="false" text="Por cedula" />
+      <RadioButton fx:id="rbtnNombres" layoutX="1022.0" layoutY="109.0" mnemonicParsing="false" selected="true" text="Por nombres" />
+      <TextField fx:id="txtBusqueda" layoutX="210.0" layoutY="109.0" prefHeight="25.0" prefWidth="761.0" />
+      <Label layoutX="55.0" layoutY="113.0" text="Busqueda:" />
+      <GridPane layoutX="768.0" layoutY="197.0" prefHeight="379.0" prefWidth="663.0">
          <children>
-            <Label layoutX="569.0" layoutY="21.0" text="Informacion de Alumno" textAlignment="CENTER" AnchorPane.bottomAnchor="558.0" AnchorPane.leftAnchor="569.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="21.0">
+            <Label text="Nombre del Padre:">
                <font>
-                  <Font name="Arabic Typesetting" size="42.0" />
+                  <Font name="Arabic Typesetting" size="22.0" />
                </font>
             </Label>
-            <GridPane layoutX="1.0" layoutY="187.0" prefHeight="379.0" prefWidth="693.0">
-               <children>
-                  <ListView fx:id="lviewMatricula" layoutX="230.0" layoutY="74.0" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label layoutX="27.0" layoutY="73.0" prefHeight="26.0" prefWidth="221.0" text="Matricula:" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Cedula: " GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Nombres:" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Fecha y Lugar Nacimiento:" GridPane.rowIndex="4">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="lviewCedula" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ListView fx:id="lviewNombres" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ListView fx:id="lviewFechaNac" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label text="Dirección Domiciliaria: " GridPane.rowIndex="5">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Teléfonos:" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Tipo de discapacidad:" GridPane.rowIndex="7">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Genero:" GridPane.rowIndex="8">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="lviewDirec" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <ListView fx:id="lviewTelef" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <ListView fx:id="lviewDiscapacidad" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <ListView fx:id="lviewGenero" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-               </children>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="395.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="44.0" minHeight="0.0" prefHeight="44.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <Button layoutX="655.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Aceptar" />
-            <GridPane layoutX="758.0" layoutY="187.0" prefHeight="379.0" prefWidth="663.0">
-               <children>
-                  <Label text="Nombre del Padre:">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Nombre de la Madre:" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Nombre Representante:" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="lviewPadre" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" />
-                  <ListView fx:id="lviewMadre" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ListView fx:id="lviewNomRep" prefHeight="64.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Telefono Representante:" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Curso Registrado:" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Arabic Typesetting" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label text="Estado de Matricula:" GridPane.rowIndex="5">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label text="Institucion de la que proviene: " GridPane.rowIndex="6">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="lviewTelefRep" prefHeight="30.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ListView fx:id="lviewCursoReg" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ListView fx:id="lviewEstadoMat" prefHeight="30.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <ListView fx:id="lviewInstitucion" prefHeight="109.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-               </children>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="281.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="382.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <Label layoutX="45.0" layoutY="103.0" text="Busqueda:" />
-            <TextField fx:id="txtBusqueda" layoutX="200.0" layoutY="99.0" prefHeight="25.0" prefWidth="761.0" />
-            <RadioButton fx:id="rbtnNombres" layoutX="1012.0" layoutY="99.0" mnemonicParsing="false" selected="true" text="Por nombres" />
-            <RadioButton fx:id="rbtnCedula" layoutX="1170.0" layoutY="98.0" mnemonicParsing="false" text="Por cedula" />
-            <RadioButton fx:id="rbtnMatricula" layoutX="1294.0" layoutY="99.0" mnemonicParsing="false" text="Por matricula" />
-            <Button fx:id="btnBuscar" layoutX="774.0" layoutY="143.0" mnemonicParsing="false" onAction="#buscarAlumno" prefHeight="25.0" prefWidth="196.0" text="Buscar" />
+            <Label text="Nombre de la Madre:" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Nombre Representante:" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lviewPadre" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" />
+            <ListView fx:id="lviewMadre" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ListView fx:id="lviewNomRep" prefHeight="64.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Telefono Representante:" GridPane.rowIndex="3">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label text="Curso Registrado:" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Estado de Matricula:" GridPane.rowIndex="5">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="Institucion de la que proviene: " GridPane.rowIndex="6">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lviewTelefRep" prefHeight="30.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ListView fx:id="lviewCursoReg" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ListView fx:id="lviewEstadoMat" prefHeight="30.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ListView fx:id="lviewInstitucion" prefHeight="109.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
-      </AnchorPane>
-   </content>
-</ScrollPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="281.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="382.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <GridPane layoutX="11.0" layoutY="197.0" prefHeight="379.0" prefWidth="693.0">
+         <children>
+            <ListView fx:id="lviewMatricula" layoutX="230.0" layoutY="74.0" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="27.0" layoutY="73.0" prefHeight="26.0" prefWidth="221.0" text="Matricula:" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Cedula: " GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Nombres:" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Fecha y Lugar Nacimiento:" GridPane.rowIndex="4">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lviewCedula" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ListView fx:id="lviewNombres" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ListView fx:id="lviewFechaNac" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Dirección Domiciliaria: " GridPane.rowIndex="5">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Teléfonos:" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Tipo de discapacidad:" GridPane.rowIndex="7">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Genero:" GridPane.rowIndex="8">
+               <font>
+                  <Font name="Arabic Typesetting" size="22.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lviewDirec" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ListView fx:id="lviewTelef" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ListView fx:id="lviewDiscapacidad" prefHeight="30.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ListView fx:id="lviewGenero" prefHeight="30.0" prefWidth="418.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="395.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="44.0" minHeight="0.0" prefHeight="44.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <Label layoutX="579.0" layoutY="31.0" text="Informacion de Alumno" textAlignment="CENTER">
+         <font>
+            <Font name="Arabic Typesetting" size="42.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -292,7 +292,6 @@ ELSE
 END IF;
 END;|
 
-DROP PROCEDURE modificarEmpleado|
 CREATE PROCEDURE modificarEmpleado(
 IN cedula VARCHAR(10),
 IN nombre VARCHAR(50),
@@ -326,7 +325,6 @@ BEGIN
     END IF;
 END;|
 
-DROP PROCEDURE asignarNombramiento|
 CREATE PROCEDURE asignarNombramiento(
 IN id VARCHAR(10),
 IN nombreDepartamento VARCHAR(50),
@@ -425,12 +423,12 @@ END;/
 DELIMITER /
 CREATE PROCEDURE mostrarNotasPeriodo(IN dato VARCHAR(50), IN periodo VARCHAR(10), IN tipoBusqueda CHAR) BEGIN
 	IF tipoBusqueda = '1' THEN
-		SELECT l.ID_Materia, m.nombreM, l.nota1, l.nota2, l.promedio, l.notaSup, c.nombreC,c.paralelo FROM libreta l JOIN materia m JOIN Pensum p JOIN Curso c ON l.ID_Materia = m.ID_Materia AND p.ID_Materia=m.ID_Materia AND c.ID_Curso=p.ID_Curso  AND l.cedula = (SELECT a.cedula FROM alumnos a JOIN matricula ma ON ma.cedula = a.cedula WHERE nombreA = dato AND ma.periodo_Electivo = periodo);
+		SELECT l.ID_Materia, m.NombreM, l.nota1, l.nota2, l.promedio, l.notaSup, c.nombreC, c.paralelo FROM matricula ma JOIN libreta l JOIN materia m JOIN Pensum p JOIN Curso c ON l.ID_Materia = m.ID_Materia AND p.ID_Materia=m.ID_Materia AND c.ID_Curso=p.ID_Curso AND ma.ID_Curso = c.ID_Curso AND ma.cedula = l.cedula AND l.cedula = (SELECT a.cedula FROM alumnos a JOIN matricula ma ON ma.cedula = a.cedula WHERE nombreA = dato AND ma.periodo_Electivo = periodo);
 	ELSE
 		IF tipoBusqueda = '2' THEN
-			SELECT l.ID_Materia, m.nombreM, l.nota1, l.nota2, l.promedio, l.notaSup, c.nombreC,c.paralelo FROM libreta l JOIN materia m JOIN Pensum p JOIN Curso c ON l.ID_Materia = m.ID_Materia AND p.ID_Materia=m.ID_Materia AND c.ID_Curso=p.ID_Curso AND l.cedula = (SELECT cedula FROM matricula WHERE cedula = dato AND periodo_Electivo = periodo);
+			SELECT l.ID_Materia, m.NombreM, l.nota1, l.nota2, l.promedio, l.notaSup, c.nombreC, c.paralelo FROM matricula ma JOIN libreta l JOIN materia m JOIN Pensum p JOIN Curso c ON l.ID_Materia = m.ID_Materia AND p.ID_Materia=m.ID_Materia AND c.ID_Curso=p.ID_Curso AND ma.ID_Curso = c.ID_Curso AND ma.cedula = l.cedula AND l.cedula = (SELECT cedula FROM matricula WHERE cedula = dato AND periodo_Electivo = periodo);
 		ELSE
-			SELECT l.ID_Materia, m.nombreM, l.nota1, l.nota2, l.promedio, l.notaSup, c.nombreC,c.paralelo FROM libreta l JOIN materia m JOIN Pensum p JOIN Curso c ON l.ID_Materia = m.ID_Materia AND p.ID_Materia=m.ID_Materia AND c.ID_Curso=p.ID_Curso AND l.cedula = (SELECT cedula FROM matricula WHERE NO_Matricula = dato AND periodo_Electivo = periodo);
+			SELECT l.ID_Materia, m.NombreM, l.nota1, l.nota2, l.promedio, l.notaSup, c.nombreC, c.paralelo FROM matricula ma JOIN libreta l JOIN materia m JOIN Pensum p JOIN Curso c ON l.ID_Materia = m.ID_Materia AND p.ID_Materia=m.ID_Materia AND c.ID_Curso=p.ID_Curso AND ma.ID_Curso = c.ID_Curso AND ma.cedula = l.cedula AND l.cedula = (SELECT cedula FROM matricula WHERE NO_Matricula = dato AND periodo_Electivo = periodo);
 		END iF;
 	END IF;
 END;
@@ -444,7 +442,7 @@ END;
 
 DELIMITER /
 CREATE PROCEDURE mostrarNotasCurso(IN nomCurso VARCHAR(50), IN paralelo CHAR, IN nomMateria VARCHAR(30),IN periodo VARCHAR(10)) BEGIN
-	SELECT ma.NO_Matricula, a.nombreA, l.nota1, l.nota2, l.promedio, l.notaSup, ma.estado, m.ID_Materia, m.nombreM FROM curso c JOIN pensum p JOIN materia m JOIN libreta l JOIN matricula ma JOIN alumnos a ON c.ID_Curso = p.ID_Curso AND m.ID_Materia = p.ID_Materia AND m.ID_Materia = l.ID_materia AND l.cedula = ma.cedula AND ma.cedula = a.cedula AND c.nombreC = nomCurso AND c.paralelo = paralelo AND m.nombreM = nomMateria where c.periodoLectivo=periodo AND m.ID_Materia LIKE concat(substring(periodo,1,4),"%");
+	SELECT m.NO_Matricula, a.nombreA, l.nota1, l.nota2, l.notaSup FROM alumnos a, libreta l, matricula m, materia ma WHERE a.cedula = m.cedula AND a.cedula = l.cedula AND ma.ID_Materia = l.ID_Materia AND ma.nombreM = nomMateria AND m.ID_Curso = (SELECT ID_Curso FROM curso c WHERE c.nombreC = nomCurso AND c.paralelo = paralelo AND c.periodoLectivo = periodo);
 END;
 /
 
@@ -506,7 +504,6 @@ END;
 
 
 DELIMITER /
-DROP PROCEDURE getDepartamentos/
 CREATE procedure getDepartamentos() BEGIN
 select nombreD,descripcion from Departamento ;
 END;
@@ -514,20 +511,20 @@ END;
 
 DELIMITER /
 CREATE procedure getInfoDepartamentos(In descripcionD VARCHAR(50)) BEGIN
-SELECT empleado.ID_Empleado,empleado.NombreCompleto,cargo.descripcion FROM empleado,cargo,departamento,contrato where empleado.ID_Empleado=contrato.Empleado and cargo.ID_Cargo=contrato.Cargo and departamento.ID_Departamento=contrato.Departamento and Departamento.descripcion=descripcionD;
+SELECT empleado.ID_Empleado,empleado.NombreCompleto,cargo.descripcion FROM empleado,cargo,departamento,contrato where empleado.ID_Empleado=contrato.Empleado and cargo.ID_Cargo=contrato.Cargo and departamento.ID_Departamento=contrato.Departamento and Departamento.nombreD=descripcionD;
 END;
 /
 
 DELIMITER /
 CREATE PROCEDURE buscarEmpleado(IN dato VARCHAR(30), IN tipoBusqueda CHAR) BEGIN
 	IF tipoBusqueda=1 THEN
-		SELECT e.*, c.descripcion, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND ID_Empleado = dato GROUP BY ID_Empleado;
+		SELECT e.*, c.descripcion, d.descripcion AS dep, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND e.ID_Empleado = dato GROUP BY ID_Empleado;
 	ELSE 
 		IF tipoBusqueda=2 THEN
-		SELECT e.*, c.descripcion, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND e.CIPasaporte = dato GROUP BY ID_Empleado;
+		SELECT e.*, c.descripcion, d.descripcion AS dep, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND e.CIPasaporte = dato GROUP BY ID_Empleado;
 		ELSE 
 			IF tipoBusqueda=3 THEN
-			SELECT e.*, c.descripcion, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND e.NombreCompleto = dato GROUP BY ID_Empleado;
+			SELECT e.*, c.descripcion, d.descripcion AS dep, SUM(con.sueldo) FROM empleado e JOIN cargo c JOIN contrato con JOIN Departamento d ON e.ID_Empleado = con.Empleado AND con.Cargo = c.ID_Cargo AND con.Departamento = d.ID_Departamento AND e.NombreCompleto = dato GROUP BY ID_Empleado;
 			END IF;
 		END IF;
 	END IF;

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alumnos.AdministrativoController">
+   <children>
+      <VBox fx:id="AlumnoLayout" alignment="TOP_CENTER" layoutY="117.0" prefHeight="707.0" prefWidth="1485.0">
+         <children>
+            <HBox fx:id="hBoxMenu" alignment="CENTER" prefHeight="29.0" prefWidth="1436.0">
+               <children>
+                  <MenuBar fx:id="menuAlumno" prefHeight="29.0" prefWidth="1322.0">
+                     <menus>
+                        <Menu fx:id="menuConsulta" mnemonicParsing="false" text="Sistema">
+                           <items>
+                              <MenuItem fx:id="menuPersonal" mnemonicParsing="false" onAction="#mostrarInfoGen" text="Informacion de la Institucion" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Consultas">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#mostrarInfoUsuario" text="Informacion Personal" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <Menu mnemonicParsing="false" text="Alumnos">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarConsultaNotaPeriodo" text="Consultar notas por periodo" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarInfoAlumno" text="Consulltar informacion" />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Empleados">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarInfoEmpleado" text="Consultar informacion" />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Cursos">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarConsultaMateriaCurso" text="Consultar Materias del curso" />
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarConsultaNotaCurso" text="Consulta de notas por curso" />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Departamentos">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#mostrarInfoDepartamento" text="Consultar informacion" />
+                                 </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <MenuBar fx:id="menuCarrar" prefHeight="29.0" prefWidth="163.0">
+                     <menus>
+                        <Menu fx:id="menuLogout" mnemonicParsing="false" text="Terminar Sesion">
+                           <items>
+                              <MenuItem fx:id="menuCerrarSesion" mnemonicParsing="false" onAction="#logout" text="Cerrar Sesion" />
+                              <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#logout" text="Salir" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+            <Pane fx:id="loaderPane" nodeOrientation="LEFT_TO_RIGHT" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="117.0" fitWidth="1491.0" layoutX="-6.0" opacity="0.68" pickOnBounds="true">
+         <effect>
+            <ColorAdjust />
+         </effect>
+         <image>
+            <Image url="@../750px-Bandera_de_Los_Ríos.svg.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -71,7 +71,8 @@ public class AsignarDirigenteController implements Initializable {
         Conexion.procedure=Conexion.connection.prepareCall("{call mostrarProfesoresDisponibles()}");
         Conexion.result=Conexion.procedure.executeQuery();
         while(Conexion.result.next()){
-            profesorBox.getItems().add(Conexion.result.getString(1));
+            if(!profesorBox.getItems().contains(Conexion.result.getString(1)))
+                profesorBox.getItems().add(Conexion.result.getString(1));
         }
         
     }
